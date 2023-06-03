@@ -12,8 +12,8 @@ import '../fortune_wheel_screen/fortune_wheel_screen.dart';
 import '../shop_screen/shop_screen.dart';
 
 class MainNavigationScreen extends StatelessWidget {
-  MainNavigationScreen({super.key});
-  final List<Widget> bodyContentList = [
+  const MainNavigationScreen({super.key});
+  final List<Widget> bodyContentList = const [
     TapScreen(),
     ChurchScreen(),
     ShopScreen(),
