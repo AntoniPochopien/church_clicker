@@ -30,7 +30,6 @@ class ChurchCubit extends Cubit<ChurchState> {
       const Duration(seconds: 1),
     ).listen(
       (event) {
-        print(state.churchEarnings);
         abilitiesCubit.addEarningsFromChurch(state.churchEarnings);
       },
     );
@@ -64,10 +63,10 @@ class ChurchCubit extends Cubit<ChurchState> {
     );
 
     calculateChurchPower();
+    abilitiesCubit.addEarningsFromChurch(-price.toDouble());
     emit(
       state.copyWith(
         ownedUpgradesChurch: state.ownedUpgradesChurch,
-        churchEarnings: state.churchEarnings - price,
       ),
     );
 
