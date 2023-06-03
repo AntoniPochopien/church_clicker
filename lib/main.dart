@@ -1,3 +1,4 @@
+import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => NavigationCubit()),
         BlocProvider(create: (context) => HiveCubit()..start()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
+        BlocProvider(create: (context) => ChurchCubit()..start(context)),
       ],
       child: MaterialApp(
         title: 'Church clicker',

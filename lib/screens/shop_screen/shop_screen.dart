@@ -1,3 +1,4 @@
+import 'package:church_clicker/screens/shop_screen/widgets/church_items_list.dart';
 import 'package:flutter/material.dart';
 
 import './widgets/priest_items_list.dart';
@@ -13,9 +14,17 @@ class ShopScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 19.0),
-              child: PriestItemList(),
+            child: PageView(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 19.0),
+                  child: PriestItemList(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 19.0),
+                  child: ChurchItemsList(),
+                ),
+              ],
             ),
           ),
           Container(

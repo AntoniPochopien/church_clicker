@@ -52,6 +52,15 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     );
   }
 
+  void addEarningsFromChurch(double v) {
+    emit(
+      state.copyWith(
+        earnedMoney: state.earnedMoney + v,
+      ),
+    );
+    hiveCubit.save(earnedMoney: state.earnedMoney);
+  }
+
   void setFromDb(
       {required double earnedMoneyDb,
       required List<UpgradeModel> ownedUpgradesDb}) {

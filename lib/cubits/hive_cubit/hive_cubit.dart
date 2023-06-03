@@ -10,7 +10,8 @@ class HiveCubit extends Cubit<HiveState> {
       : super(
           HiveState(
             earnedMoney: 0,
-            ownedUpgradesDb: [],
+            ownedUpgradesPriestDb: [],
+            ownedUpgradesChurchDb: [],
           ),
         );
 
@@ -21,14 +22,25 @@ class HiveCubit extends Cubit<HiveState> {
     emit(
       state.copyWith(
         earnedMoney: box.get('earnedMoney') ?? 0,
-        ownedUpgradesDb:
-            box.get('ownedUpgradesDb')?.cast<UpgradeModel>().toList() ?? [],
+        ownedUpgradesPriestDb:
+            box.get('ownedUpgradesPriestDb')?.cast<UpgradeModel>().toList() ??
+                [],
+        ownedUpgradesChurchDb:
+            box.get('ownedUpgradesChurchDb')?.cast<UpgradeModel>().toList() ??
+                [],
       ),
     );
   }
 
-  void save({double? earnedMoney, List<UpgradeModel>? ownedUpgrades}) {
+  void save({
+    double? earnedMoney,
+    List<UpgradeModel>? ownedUpgrades,
+    List<UpgradeModel>? ownedUpgradesChurchDb,
+  }) {
     box.put('earnedMoney', earnedMoney ?? state.earnedMoney);
-    box.put('ownedUpgradesDb', ownedUpgrades ?? state.ownedUpgradesDb);
+    box.put(
+        'ownedUpgradesPriestDb', ownedUpgrades ?? state.ownedUpgradesPriestDb);
+    box.put('ownedUpgradesChurchDb',
+        ownedUpgradesChurchDb ?? state.ownedUpgradesChurchDb);
   }
 }

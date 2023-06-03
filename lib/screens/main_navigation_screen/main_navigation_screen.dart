@@ -1,3 +1,4 @@
+import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 
 import 'package:flutter/material.dart';
@@ -29,7 +30,10 @@ class MainNavigationScreen extends StatelessWidget {
               listener: (context, hiveState) {
                 BlocProvider.of<AbilitiesCubit>(context).setFromDb(
                     earnedMoneyDb: hiveState.earnedMoney,
-                    ownedUpgradesDb: hiveState.ownedUpgradesDb);
+                    ownedUpgradesDb: hiveState.ownedUpgradesPriestDb);
+                BlocProvider.of<ChurchCubit>(context).setOwnedUpgradesFromDb(
+                  ownedUpgradesChurch: hiveState.ownedUpgradesChurchDb,
+                );
               },
               child: Scaffold(
                 appBar: AppBar(
