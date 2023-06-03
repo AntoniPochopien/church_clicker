@@ -69,10 +69,16 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
 
   void calculateTapPower() {
     tapValue = 1;
+
     state.ownedUpgradesPriest.forEach(
       (element) {
-        tapValue += (element.hitInitialBonus * element.currentLvl) *
+        final x = (element.hitInitialBonus * element.currentLvl) *
             element.hitMultiplier;
+        if ((tapValue + x).floor() <= tapValue) {
+          tapValue += element.currentLvl;
+        } else {
+          tapValue += x * 10;
+        }
       },
     );
   }

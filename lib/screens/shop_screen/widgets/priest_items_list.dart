@@ -1,6 +1,7 @@
 import 'package:church_clicker/models/upgrade_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:math';
 
 import '../../../data/shop_items.dart';
 import '../../../cubits/abilities_cubit/abilities_cubit.dart';
@@ -34,17 +35,25 @@ class PriestItemList extends StatelessWidget {
     return BlocBuilder<AbilitiesCubit, AbilitiesState>(
       builder: (context, abilitiesState) {
         return ListView.builder(
-          itemCount: ShopItems.priestItems.length,
-          itemBuilder: (context, index) => ItemWidget(
-            id: ShopItems.priestItems[index].id,
-            maxLvl: ShopItems.priestItems[index].maxLvl,
-            name: ShopItems.priestItems[index].name,
-            ownedLvl: _calcualteOwnedLvl(
-                upgradeId: ShopItems.priestItems[index].id,
-                ownedUpgradeIdList: abilitiesState.ownedUpgradesPriest),
-            price: ShopItems.priestItems[index].initialPrice,
-          ),
-        );
+            itemCount: ShopItems.priestItems.length,
+            itemBuilder: (context, index) {
+              final ownedLvl = _calcualteOwnedLvl(
+                  upgradeId: ShopItems.priestItems[index].id,
+                  ownedUpgradeIdList: abilitiesState.ownedUpgradesPriest);
+              final price = ShopItems.priestItems[index].initialPrice *
+                  pow(ShopItems.priestItems[index].priceMultiplier, ownedLvl)
+                      .toDouble();
+
+              return ItemWidget(
+                id: ShopItems.priestItems[index].id,
+                maxLvl: ShopItems.priestItems[index].maxLvl,
+                name: ShopItems.priestItems[index].name,
+                ownedLvl: ownedLvl,
+                price: ownedLvl != 0
+                    ? price
+                    : ShopItems.priestItems[index].initialPrice.toDouble(),
+              );
+            });
       },
     );
   }

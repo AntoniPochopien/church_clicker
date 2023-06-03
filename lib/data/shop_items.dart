@@ -11,7 +11,7 @@ class ShopItems {
       initialPrice: 10,
       maxLvl: 100,
       hitMultiplier: 0.1,
-      priceMultiplier: 0.2,
+      priceMultiplier: 1.1,
     ),
     UpgradeModel(
       id: 2,
@@ -22,7 +22,7 @@ class ShopItems {
       initialPrice: 150,
       maxLvl: 50,
       hitMultiplier: 0.5,
-      priceMultiplier: 0.3,
+      priceMultiplier: 1.3,
     ),
   ];
 }
