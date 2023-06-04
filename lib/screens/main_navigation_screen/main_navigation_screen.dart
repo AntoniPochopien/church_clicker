@@ -12,8 +12,8 @@ import '../fortune_wheel_screen/fortune_wheel_screen.dart';
 import '../shop_screen/shop_screen.dart';
 
 class MainNavigationScreen extends StatelessWidget {
-  const MainNavigationScreen({super.key});
-  final List<Widget> bodyContentList = const [
+  MainNavigationScreen({super.key});
+  final List<Widget> bodyContentList = [
     TapScreen(),
     ChurchScreen(),
     ShopScreen(),
@@ -38,11 +38,8 @@ class MainNavigationScreen extends StatelessWidget {
               child: Scaffold(
                 appBar: AppBar(
                   centerTitle: true,
-                  title: Column(
-                    children: [
-                      Text('złoto'),
-                      Text(abilitiesState.earnedMoney.toStringAsFixed(1)),
-                    ],
+                  title: Text(
+                    abilitiesState.earnedMoney.toInt().toString(),
                   ),
                 ),
                 body: IndexedStack(
