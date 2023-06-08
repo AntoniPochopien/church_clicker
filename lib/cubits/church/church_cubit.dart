@@ -26,10 +26,12 @@ class ChurchCubit extends Cubit<ChurchState> {
   void start(BuildContext ctx) {
     hiveCubit = ctx.read<HiveCubit>();
     abilitiesCubit = ctx.read<AbilitiesCubit>();
+    calculateChurchPower();
     streamSubscription = Stream.periodic(
       const Duration(seconds: 1),
     ).listen(
       (event) {
+        print(state.churchEarnings);
         abilitiesCubit.addEarningsFromChurch(state.churchEarnings);
       },
     );
@@ -62,17 +64,16 @@ class ChurchCubit extends Cubit<ChurchState> {
       (element) => print(element.currentLvl),
     );
 
-    calculateChurchPower();
     abilitiesCubit.addEarningsFromChurch(-price.toDouble());
     emit(
       state.copyWith(
         ownedUpgradesChurch: state.ownedUpgradesChurch,
       ),
     );
-
     hiveCubit.save(
       ownedUpgradesChurchDb: state.ownedUpgradesChurch,
     );
+    calculateChurchPower();
   }
 
   void calculateChurchPower() {
@@ -82,10 +83,12 @@ class ChurchCubit extends Cubit<ChurchState> {
       (element) {
         final x = (element.hitInitialBonus * element.currentLvl) *
             element.hitMultiplier;
+        print('x : ${state.churchEarnings + x}');
         if ((state.churchEarnings + x).floor() <= state.churchEarnings) {
           state.churchEarnings += element.currentLvl;
           print('floor ${state.churchEarnings}');
         } else {
+          state.churchEarnings += x;
           print('no floor ${state.churchEarnings}');
         }
       },
