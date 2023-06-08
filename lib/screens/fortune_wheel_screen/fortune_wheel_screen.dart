@@ -18,33 +18,40 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: FortuneWheel(
-          onFling: () {
-            setState(
-              () {
-                final randomPosition = Fortune.randomInt(0, 3);
-                controller.add(randomPosition);
-                wonPrize = listaNagrod[randomPosition];
-                print(wonPrize);
-              },
-            );
-          },
-          selected: controller.stream,
-          items: [
-            ...listaNagrod.map(
-              (e) => FortuneItem(
-                child: Text(e),
+    return Center(
+      child: Column(
+        children: [
+          Expanded(
+            child: FortuneWheel(
+              animateFirst: false,
+              physics: NoPanPhysics(),
+              selected: controller.stream,
+              items: [
+                ...listaNagrod.map(
+                  (e) => FortuneItem(
+                    child: Text(e),
+                  ),
+                ),
+              ],
+              onAnimationEnd: () => ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(wonPrize),
+                ),
               ),
             ),
-          ],
-          onAnimationEnd: () => ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(wonPrize),
-            ),
           ),
-        ),
+          SafeArea(
+            child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    final randomPosition = Fortune.randomInt(0, 3);
+                    controller.add(randomPosition);
+                    wonPrize = listaNagrod[randomPosition];
+                  });
+                },
+                child: Text('spin')),
+          )
+        ],
       ),
     );
   }
