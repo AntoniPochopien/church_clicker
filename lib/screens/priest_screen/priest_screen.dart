@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/abilities_cubit/abilities_cubit.dart';
 
-class TapScreen extends StatelessWidget {
-  const TapScreen({super.key});
+class PriestScreen extends StatelessWidget {
+  const PriestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

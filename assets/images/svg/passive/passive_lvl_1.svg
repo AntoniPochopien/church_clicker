@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1155.18">
+  <defs>
+    <style>
+      .c {
+        fill: #959bae;
+      }
+
+      .d {
+        fill: #36424f;
+      }
+
+      .e {
+        fill: #2a415b;
+      }
+
+      .f {
+        fill: #067a61;
+      }
+
+      .g {
+        fill: #e2e2e6;
+      }
+
+      .h {
+        fill: #959db0;
+      }
+
+      .i {
+        fill: #098d73;
+      }
+
+      .j {
+        fill: #fbfbfb;
+      }
+
+      .k {
+        fill: #07ac85;
+      }
+
+      .l {
+        fill: #58893e;
+      }
+
+      .m {
+        fill: #152937;
+      }
+
+      .n {
+        fill: #05614e;
+      }
+
+      .o {
+        fill: #f2f2f2;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="k" cx="716.03" cy="427.37" r="38.98"/>
+    <circle class="f" cx="717.55" cy="477.01" r="38.98"/>
+  </g>
+  <g>
+    <circle class="k" cx="323.34" cy="528.01" r="38.98"/>
+    <circle class="i" cx="282.93" cy="556.89" r="38.98"/>
+  </g>
+  <g>
+    <path class="l" d="m306.74,1129.34s89.83-36.23,77-173.31c-12.83-137.08-145.69-39.17-77,173.31Z"/>
+    <path class="f" d="m306.74,1129.34s17.23-363.55-86.19-373.34c-103.42-9.79-5.9,373.34-5.9,373.34h92.1Z"/>
+    <path class="i" d="m250.12,1129.34s44.79-296.41-54.35-257.52c-175.76,68.94-6.79,257.52-6.79,257.52h61.15Z"/>
+    <path class="k" d="m102.92,1129.34s-86.06-13.71-59.64-62.59c26.42-48.88,120.03-60.21,149.47-16.1,29.44,44.11,21.89,78.68,21.89,78.68h-111.72Z"/>
+  </g>
+  <g>
+    <polygon class="j" points="817.59 675.85 264.64 675.85 541.11 277.04 817.59 675.85"/>
+    <g>
+      <rect class="o" x="517.57" y="234.33" width="38.99" height="159.7" transform="translate(1074.12 628.36) rotate(180)"/>
+      <rect class="o" x="439.59" y="473.5" width="38.99" height="213.46" transform="translate(962.31 1122.62) rotate(175.5)"/>
+      <rect class="o" x="681.63" y="442.49" width="38.99" height="233.35" transform="translate(1402.24 1118.34) rotate(180)"/>
+      <rect class="g" x="556.55" y="265.71" width="38.99" height="249.13" transform="translate(1152.09 780.55) rotate(180)"/>
+      <rect class="g" x="478.58" y="277.04" width="38.99" height="258.08" transform="translate(996.14 812.15) rotate(180)"/>
+      <rect class="g" x="759.6" y="556.82" width="38.99" height="119.34" transform="translate(1558.19 1232.98) rotate(180)"/>
+    </g>
+    <rect class="g" x="283.64" y="675.84" width="514.95" height="434.39"/>
+    <rect class="c" x="283.64" y="675.84" width="514.95" height="24.64"/>
+    <rect class="h" x="283.64" y="1110.23" width="514.95" height="19.82"/>
+    <rect class="e" x="459.41" y="800.82" width="163.41" height="309.42"/>
+    <rect class="m" x="459.41" y="800.82" width="163.41" height="25.14"/>
+    <path class="m" d="m459.41,978.32h25.81c9.77,0,17.7,7.93,17.7,17.7v114.22h-43.51v-131.92h0Z"/>
+    <path class="m" d="m597.01,978.32h25.81v131.92h-43.51v-114.22c0-9.77,7.93-17.7,17.7-17.7Z"/>
+    <polygon class="h" points="642.64 1110.23 622.82 1110.23 622.82 800.82 459.41 800.82 459.41 1110.23 439.59 1110.23 439.59 781 642.64 781 642.64 1110.23"/>
+    <g>
+      <rect class="o" x="322.63" y="700.48" width="38.99" height="272.09"/>
+      <rect class="o" x="400.6" y="700.48" width="38.99" height="366.54"/>
+      <rect class="j" x="284.26" y="690.62" width="38.99" height="206.64" transform="translate(101.73 -31.77) rotate(7.19)"/>
+      <rect class="j" x="361.62" y="700.48" width="38.99" height="114.68"/>
+      <rect class="o" x="519.76" y="700.48" width="38.99" height="80.51"/>
+    </g>
+    <g>
+      <rect class="o" x="681.63" y="700.48" width="38.99" height="110.67"/>
+      <rect class="o" x="759.6" y="700.48" width="38.99" height="362.53"/>
+      <rect class="j" x="642.64" y="700.48" width="38.99" height="192.72"/>
+      <rect class="j" x="721.96" y="730.75" width="38.99" height="237.76" transform="translate(-64.42 60.84) rotate(-4.5)"/>
+    </g>
+    <circle class="m" cx="541.11" cy="532.14" r="52"/>
+    <circle class="e" cx="541.29" cy="539.35" r="46.89"/>
+    <path class="h" d="m541.11,597.74c-36.17,0-65.6-29.43-65.6-65.6s29.43-65.6,65.6-65.6,65.6,29.43,65.6,65.6-29.43,65.6-65.6,65.6Zm0-117.6c-28.67,0-52,23.33-52,52s23.33,52,52,52,52-23.33,52-52-23.33-52-52-52Z"/>
+    <polygon class="c" points="851.22 675.85 817.59 675.85 541.11 277.04 264.64 675.85 231.01 675.85 541.11 228.54 851.22 675.85"/>
+    <g>
+      <rect class="e" x="464.81" y="113.6" width="152.62" height="18.5" transform="translate(368.26 650.13) rotate(-84.64)"/>
+      <rect class="e" x="533.93" y="54.57" width="18.5" height="92.49" transform="translate(392.07 632.21) rotate(-84.64)"/>
+    </g>
+    <polygon class="m" points="541.11 181.93 217.59 648.58 217.59 715.81 541.11 249.16 864.63 715.81 864.63 648.58 541.11 181.93"/>
+    <polygon class="d" points="541.11 181.93 217.59 648.58 217.59 715.81 541.11 249.16 541.11 181.93"/>
+    <rect class="m" x="538.46" y="489.95" width="5.66" height="94.09"/>
+    <rect class="m" x="538.46" y="488.31" width="5.66" height="97.38" transform="translate(1078.28 -4.29) rotate(90)"/>
+    <rect class="h" x="319" y="829.87" width="97.67" height="126.66" transform="translate(29.85 -11.72) rotate(1.9)"/>
+    <rect class="g" x="337.66" y="844.07" width="60.34" height="87.6" transform="translate(-32.19 14.03) rotate(-2.09)"/>
+    <circle class="e" cx="365.37" cy="849.97" r="2.46"/>
+    <rect class="h" x="349.76" y="863.37" width="32.43" height="3.8" transform="translate(-31.36 13.95) rotate(-2.09)"/>
+    <rect class="h" x="351.93" y="894.54" width="32.43" height="3.8" transform="translate(-32.5 14.05) rotate(-2.09)"/>
+    <rect class="h" x="372.61" y="908.74" width="17.34" height="1.94" transform="translate(-32.97 14.53) rotate(-2.09)"/>
+    <rect class="h" x="344.01" y="873.28" width="44.66" height="3.8" transform="translate(-31.72 13.97) rotate(-2.09)"/>
+  </g>
+  <rect class="n" x="90.93" y="1129.91" width="898.14" height="25.27" rx="12.32" ry="12.32"/>
+  <g>
+    <path class="f" d="m786.71,1129.98s-64.09-224.58,33.47-230.57c97.56-5.99,53.41,230.57,53.41,230.57h-86.88Z"/>
+    <path class="i" d="m840.12,1129.98s-47-169.48,51.27-157.51c98.27,11.98,6.41,157.51,6.41,157.51h-57.68Z"/>
+    <path class="k" d="m978.99,1129.98s81.18-13.77,56.26-62.88c-24.92-49.11-113.23-60.49-141-16.17-27.77,44.32-20.65,79.06-20.65,79.06h105.39Z"/>
+    <path class="k" d="m786.71,1129.98s-126.86,31.82-81.1-43.36c24.1-39.6,128.67-69.81,134.51,43.36.4,7.82-36.52,0-53.41,0Z"/>
+  </g>
+</svg>
