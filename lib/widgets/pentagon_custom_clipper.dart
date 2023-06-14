@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ButtonClipper extends CustomClipper<Path> {
+class PentagonCustomClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();

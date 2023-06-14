@@ -1,4 +1,4 @@
-import 'package:church_clicker/screens/main_navigation_screen/buttons_clipper.dart';
+import 'package:church_clicker/widgets/pentagon_custom_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,7 +28,7 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: ButtonClipper(),
+      clipper: PentagonCustomClipper(),
       child: GestureDetector(
         onTap: () {
           if (isAvaliable) {

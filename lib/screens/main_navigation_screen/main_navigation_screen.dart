@@ -11,7 +11,7 @@ import '../priest_screen/priest_screen.dart';
 import '../church_screen/church_screen.dart';
 import '../fortune_wheel_screen/fortune_wheel_screen.dart';
 import '../shop_screen/shop_screen.dart';
-import './buttons_clipper.dart';
+import '../../widgets/pentagon_custom_clipper.dart';
 
 class MainNavigationScreen extends StatelessWidget {
   MainNavigationScreen({super.key});
@@ -30,7 +30,7 @@ class MainNavigationScreen extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 1 / 1,
           child: ClipPath(
-            clipper: ButtonClipper(),
+            clipper: PentagonCustomClipper(),
             child: Stack(
               children: [
                 Container(
