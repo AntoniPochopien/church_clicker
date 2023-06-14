@@ -26,7 +26,7 @@ class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFEEEFDF),
+      color: const Color(0xFF292241),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

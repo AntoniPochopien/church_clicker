@@ -12,6 +12,7 @@ class ShopItems {
       maxLvl: 100,
       hitMultiplier: 0.1,
       priceMultiplier: 1.1,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
     UpgradeModel(
       id: 2,
@@ -23,12 +24,37 @@ class ShopItems {
       maxLvl: 50,
       hitMultiplier: 0.5,
       priceMultiplier: 1.3,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_2.svg',
+    ),
+    UpgradeModel(
+      id: 3,
+      name: 'Mównica',
+      churchInitialBonus: 0,
+      currentLvl: 0,
+      hitInitialBonus: 2,
+      initialPrice: 150,
+      maxLvl: 50,
+      hitMultiplier: 0.5,
+      priceMultiplier: 1.3,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_3.svg',
+    ),
+    UpgradeModel(
+      id: 3,
+      name: 'Mównica',
+      churchInitialBonus: 0,
+      currentLvl: 0,
+      hitInitialBonus: 2,
+      initialPrice: 150,
+      maxLvl: 50,
+      hitMultiplier: 0.5,
+      priceMultiplier: 1.3,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_4.svg',
     ),
   ];
 
   static final List<UpgradeModel> churchItems = [
     UpgradeModel(
-      id: 3,
+      id: 4,
       name: 'Nowy ministrant',
       churchInitialBonus: 0,
       currentLvl: 0,
@@ -37,9 +63,10 @@ class ShopItems {
       maxLvl: 100,
       hitMultiplier: 0.1,
       priceMultiplier: 1.1,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
     UpgradeModel(
-      id: 4,
+      id: 5,
       name: 'Nagłośnienie',
       churchInitialBonus: 0,
       currentLvl: 0,
@@ -48,6 +75,7 @@ class ShopItems {
       maxLvl: 50,
       hitMultiplier: 0.5,
       priceMultiplier: 1.3,
+      imgPath: 'assets/images/svg/shop_passive/passive_item_2.svg',
     ),
   ];
 }

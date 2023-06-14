@@ -22,8 +22,10 @@ class UpgradeModel {
   double hitMultiplier;
   @HiveField(8)
   double priceMultiplier;
+  String imgPath;
 
   UpgradeModel({
+    required this.imgPath,
     required this.id,
     required this.name,
     required this.churchInitialBonus,

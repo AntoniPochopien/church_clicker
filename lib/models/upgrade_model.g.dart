@@ -26,13 +26,14 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       maxLvl: fields[3] as int,
       hitMultiplier: fields[7] as double,
       priceMultiplier: fields[8] as double,
+      imgPath: fields[9] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, UpgradeModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -50,7 +51,8 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       ..writeByte(7)
       ..write(obj.hitMultiplier)
       ..writeByte(8)
-      ..write(obj.priceMultiplier);
+      ..write(obj.priceMultiplier)
+      ..writeByte(9);
   }
 
   @override

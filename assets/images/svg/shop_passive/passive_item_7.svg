@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.51 197.39">
+  <polygon points="168.55 145.85 90.94 145.85 90.94 67.4 129.63 29.53 168.55 67.4 168.55 145.85" fill="#c7b600"/>
+  <path d="m80.28,52.64h0c10.21,0,18.51,8.29,18.51,18.51v74.72h-37.01v-74.72c0-10.21,8.29-18.51,18.51-18.51Z" fill="#5e513e"/>
+  <path d="m178.82,52.64h0c10.21,0,18.51,8.29,18.51,18.51v74.72h-37.01v-74.72c0-10.21,8.29-18.51,18.51-18.51Z" fill="#5e513e"/>
+  <path d="m129.75,25.93h0c15.32,0,27.76,12.44,27.76,27.76v92.18h-55.52V53.69c0-15.32,12.44-27.76,27.76-27.76Z" fill="#5e513e"/>
+  <g>
+    <polygon points="75.74 145.87 65.86 145.87 65.86 67.44 75.74 71.46 75.74 145.87" fill="#ededed"/>
+    <polygon points="85.61 145.87 75.74 145.87 75.74 83.33 85.61 87.35 85.61 145.87" fill="#ababab"/>
+    <polygon points="95.48 145.87 85.61 145.87 85.61 98.07 95.48 102.09 95.48 145.87" fill="#c7c7c7"/>
+  </g>
+  <g>
+    <polygon points="183.76 145.87 193.63 145.87 193.63 67.44 183.76 71.46 183.76 145.87" fill="#c7c7c7"/>
+    <polygon points="173.89 145.87 183.76 145.87 183.76 83.33 173.89 87.35 173.89 145.87" fill="#ababab"/>
+    <polygon points="164.01 145.87 173.89 145.87 173.89 98.07 164.01 102.09 164.01 145.87" fill="#ededed"/>
+  </g>
+  <g>
+    <polygon points="134.68 145.87 124.81 145.87 124.81 36.77 134.68 40.79 134.68 145.87" fill="#ededed"/>
+    <polygon points="144.56 145.87 134.68 145.87 134.68 52.66 144.56 56.68 144.56 145.87" fill="#ababab"/>
+    <polygon points="154.43 145.87 144.56 145.87 144.56 67.4 154.43 71.42 154.43 145.87" fill="#c7c7c7"/>
+    <polygon points="114.94 145.87 124.81 145.87 124.81 52.66 114.94 56.68 114.94 145.87" fill="#ababab"/>
+    <polygon points="105.06 145.87 114.94 145.87 114.94 67.4 105.06 71.42 105.06 145.87" fill="#c7c7c7"/>
+  </g>
+  <path d="m61.66,141.01h136.19c5.15,0,9.34,4.18,9.34,9.34v17.52H52.32v-17.52c0-5.15,4.18-9.34,9.34-9.34Z" fill="#948063"/>
+  <rect x="52.32" y="167.87" width="10.16" height="29.52" fill="#7d6c51"/>
+  <rect x="197.03" y="167.87" width="10.16" height="29.52" fill="#7d6c51"/>
+  <rect x="62.48" y="167.87" width="134.54" height="29.52" fill="#5e513e"/>
+  <rect x="62.48" y="150.36" width="134.54" height="12.97" fill="#5e513e"/>
+  <g>
+    <rect x="64.19" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="74.1" y="153.44" width="5.37" height="2.55"/>
+    <rect x="179.8" y="153.44" width="5.37" height="2.55"/>
+    <rect x="93.83" y="153.44" width="5.37" height="2.55"/>
+    <rect x="100.48" y="153.44" width="5.37" height="2.55"/>
+    <rect x="153.43" y="153.44" width="5.37" height="2.55"/>
+    <rect x="160.08" y="153.44" width="5.37" height="2.55"/>
+    <rect x="120.31" y="153.44" width="5.37" height="2.55"/>
+    <rect x="126.95" y="153.44" width="5.37" height="2.55"/>
+    <rect x="133.58" y="153.44" width="5.37" height="2.55"/>
+    <rect x="70.8" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="77.41" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="84.03" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="90.64" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="97.25" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="103.86" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="110.47" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="117.08" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="123.7" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="130.31" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="136.92" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="143.53" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="150.14" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="156.75" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="163.36" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="169.98" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="176.59" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="183.2" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+    <rect x="189.95" y="155.99" width="5.37" height="5.7" fill="#fff"/>
+  </g>
+</svg>

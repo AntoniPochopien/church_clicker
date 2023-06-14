@@ -13,7 +13,9 @@ class HiveCubit extends Cubit<HiveState> {
             ownedUpgradesPriestDb: [],
             ownedUpgradesChurchDb: [],
           ),
-        );
+        ) {
+    start();
+  }
 
   late Box box;
 

@@ -18,15 +18,17 @@ class PriestItemList extends StatelessWidget {
           .firstWhere(
             (element) => element.id == upgradeId,
             orElse: () => UpgradeModel(
-                id: 0,
-                currentLvl: 0,
-                maxLvl: 0,
-                initialPrice: 0,
-                churchInitialBonus: 0,
-                hitInitialBonus: 0,
-                hitMultiplier: 0,
-                name: '',
-                priceMultiplier: 0),
+              id: 0,
+              currentLvl: 0,
+              maxLvl: 0,
+              initialPrice: 0,
+              churchInitialBonus: 0,
+              hitInitialBonus: 0,
+              hitMultiplier: 0,
+              name: '',
+              priceMultiplier: 0,
+              imgPath: '',
+            ),
           )
           .currentLvl;
 
@@ -47,6 +49,7 @@ class PriestItemList extends StatelessWidget {
               return BlocBuilder<AbilitiesCubit, AbilitiesState>(
                 builder: (context, abilitiesState) {
                   return ItemWidget(
+                    imgPath: ShopItems.priestItems[index].imgPath,
                     isPriestUpgrade: true,
                     isAvaliable: abilitiesState.earnedMoney >= price.toInt() &&
                         ShopItems.priestItems[index].maxLvl >= ownedLvl,
