@@ -23,13 +23,14 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => NavigationCubit()),
-        BlocProvider(create: (context) => HiveCubit()),
+        BlocProvider(create: (context) => HiveCubit()..start()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
         BlocProvider(create: (context) => ChurchCubit()..start(context)),
       ],
       child: MaterialApp(
         title: 'Church clicker',
         theme: ThemeData(
+          fontFamily: 'PirataOne',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),

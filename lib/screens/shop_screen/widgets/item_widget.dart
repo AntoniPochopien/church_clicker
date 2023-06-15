@@ -63,16 +63,43 @@ class ItemWidget extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(name),
-                          Text('${ownedLvl}/${maxLvl}'),
+                          Text(
+                            name,
+                            style: TextStyle(fontSize: 24),
+                          ),
+                          Text(
+                            '${ownedLvl}/${maxLvl}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black.withOpacity(0.5)),
+                          ),
                         ],
                       ),
                     ),
                     Expanded(
                       flex: 1,
-                      child: Text(
-                        price.toInt().toString(),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              price.toInt().toString(),
+                              style: const TextStyle(
+                                  fontSize: 24, color: Colors.red),
+                            ),
+                            Text(
+                              '+ 10/s',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black.withOpacity(0.5)),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],

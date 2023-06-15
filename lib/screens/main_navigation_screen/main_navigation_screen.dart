@@ -81,7 +81,7 @@ class MainNavigationScreen extends StatelessWidget {
                   centerTitle: true,
                   title: Text(
                     abilitiesState.earnedMoney.toInt().toString(),
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white, fontSize: 55),
                   ),
                 ),
                 body: AnimatedSwitcher(

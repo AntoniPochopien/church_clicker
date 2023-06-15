@@ -52,7 +52,8 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       ..write(obj.hitMultiplier)
       ..writeByte(8)
       ..write(obj.priceMultiplier)
-      ..writeByte(9);
+      ..writeByte(9)
+      ..write(obj.imgPath);
   }
 
   @override

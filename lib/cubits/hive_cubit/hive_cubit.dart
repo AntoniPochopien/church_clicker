@@ -13,14 +13,14 @@ class HiveCubit extends Cubit<HiveState> {
             ownedUpgradesPriestDb: [],
             ownedUpgradesChurchDb: [],
           ),
-        ) {
-    start();
-  }
+        );
 
   late Box box;
 
   void start() async {
+    print('init box');
     box = await Hive.openBox('MyBox');
+    print('after box init');
     emit(
       state.copyWith(
         earnedMoney: box.get('earnedMoney') ?? 0,
