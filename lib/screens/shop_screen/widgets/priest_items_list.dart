@@ -1,7 +1,6 @@
 import 'package:church_clicker/models/upgrade_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:math';
 
 import '../../../data/shop_items.dart';
 import '../../../cubits/abilities_cubit/abilities_cubit.dart';
@@ -18,15 +17,13 @@ class PriestItemList extends StatelessWidget {
           .firstWhere(
             (element) => element.id == upgradeId,
             orElse: () => UpgradeModel(
+              priceMultiplier: 0,
               id: 0,
               currentLvl: 0,
               maxLvl: 0,
-              initialPrice: 0,
-              churchInitialBonus: 0,
-              hitInitialBonus: 0,
-              hitMultiplier: 0,
+              price: 0,
+              updateValue: 0,
               name: '',
-              priceMultiplier: 0,
               imgPath: '',
             ),
           )
@@ -39,28 +36,26 @@ class PriestItemList extends StatelessWidget {
         return ListView.builder(
             itemCount: ShopItems.priestItems.length,
             itemBuilder: (context, index) {
+              final item = ShopItems.priestItems[index];
               final ownedLvl = _calcualteOwnedLvl(
-                  upgradeId: ShopItems.priestItems[index].id,
+                  upgradeId: item.id,
                   ownedUpgradeIdList: abilitiesState.ownedUpgradesPriest);
-              final price = ShopItems.priestItems[index].initialPrice *
-                  pow(ShopItems.priestItems[index].priceMultiplier, ownedLvl)
-                      .toDouble();
+              final price = item.price * (ownedLvl * item.priceMultiplier);
 
               return BlocBuilder<AbilitiesCubit, AbilitiesState>(
                 builder: (context, abilitiesState) {
                   return ItemWidget(
-                    imgPath: ShopItems.priestItems[index].imgPath,
+                    upgradeValue: item.updateValue,
+                    imgPath: item.imgPath,
                     isPriestUpgrade: true,
                     isAvaliable: abilitiesState.earnedMoney >= price.toInt() &&
-                        ShopItems.priestItems[index].maxLvl >= ownedLvl,
+                        item.maxLvl >= ownedLvl,
                     onTap: BlocProvider.of<AbilitiesCubit>(context).buyUpgrade,
-                    id: ShopItems.priestItems[index].id,
-                    maxLvl: ShopItems.priestItems[index].maxLvl,
-                    name: ShopItems.priestItems[index].name,
+                    id: item.id,
+                    maxLvl: item.maxLvl,
+                    name: item.name,
                     ownedLvl: ownedLvl,
-                    price: ownedLvl != 0
-                        ? price
-                        : ShopItems.priestItems[index].initialPrice.toDouble(),
+                    price: price != 0 ? price.toInt() : item.price,
                   );
                 },
               );

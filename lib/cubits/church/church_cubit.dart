@@ -77,26 +77,16 @@ class ChurchCubit extends Cubit<ChurchState> {
   }
 
   void calculateChurchPower() {
-    state.churchEarnings = 0;
-    print('calculate');
+    double x = 0;
     state.ownedUpgradesChurch.forEach(
       (element) {
-        final x = (element.hitInitialBonus * element.currentLvl) *
-            element.hitMultiplier;
-        print('x : ${state.churchEarnings + x}');
-        if ((state.churchEarnings + x).floor() <= state.churchEarnings) {
-          state.churchEarnings += element.currentLvl;
-          print('floor ${state.churchEarnings}');
-        } else {
-          state.churchEarnings += x;
-          print('no floor ${state.churchEarnings}');
-        }
+        final v = element.updateValue * element.currentLvl;
+        x += v;
       },
     );
-    print('final wynik ${state.churchEarnings}');
     emit(
       state.copyWith(
-        churchEarnings: state.churchEarnings,
+        churchEarnings: x,
       ),
     );
   }

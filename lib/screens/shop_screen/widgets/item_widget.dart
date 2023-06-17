@@ -4,10 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ItemWidget extends StatelessWidget {
   final int id;
-  final double price;
+  final int price;
   final String name;
   final int ownedLvl;
   final int maxLvl;
+  final int upgradeValue;
   final bool isPriestUpgrade;
   final Function onTap;
   final bool isAvaliable;
@@ -16,6 +17,7 @@ class ItemWidget extends StatelessWidget {
     super.key,
     required this.imgPath,
     required this.onTap,
+    required this.upgradeValue,
     required this.isAvaliable,
     required this.isPriestUpgrade,
     required this.id,
@@ -93,7 +95,7 @@ class ItemWidget extends StatelessWidget {
                                   fontSize: 24, color: Colors.red),
                             ),
                             Text(
-                              '+ 10/s',
+                              '+ ${upgradeValue}/s',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black.withOpacity(0.5)),

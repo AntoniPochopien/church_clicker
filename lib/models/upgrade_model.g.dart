@@ -17,43 +17,37 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return UpgradeModel(
+      imgPath: fields[6] as String,
       id: fields[0] as int,
       name: fields[1] as String,
-      churchInitialBonus: fields[6] as double,
       currentLvl: fields[4] as int,
-      hitInitialBonus: fields[5] as double,
-      initialPrice: fields[2] as int,
+      updateValue: fields[5] as int,
+      price: fields[2] as int,
       maxLvl: fields[3] as int,
-      hitMultiplier: fields[7] as double,
-      priceMultiplier: fields[8] as double,
-      imgPath: fields[9] as String,
+      priceMultiplier: fields[7] as double,
     );
   }
 
   @override
   void write(BinaryWriter writer, UpgradeModel obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.initialPrice)
+      ..write(obj.price)
       ..writeByte(3)
       ..write(obj.maxLvl)
       ..writeByte(4)
       ..write(obj.currentLvl)
       ..writeByte(5)
-      ..write(obj.hitInitialBonus)
+      ..write(obj.updateValue)
       ..writeByte(6)
-      ..write(obj.churchInitialBonus)
+      ..write(obj.imgPath)
       ..writeByte(7)
-      ..write(obj.hitMultiplier)
-      ..writeByte(8)
-      ..write(obj.priceMultiplier)
-      ..writeByte(9)
-      ..write(obj.imgPath);
+      ..write(obj.priceMultiplier);
   }
 
   @override

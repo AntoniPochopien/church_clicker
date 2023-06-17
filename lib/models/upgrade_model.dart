@@ -9,32 +9,26 @@ class UpgradeModel {
   @HiveField(1)
   String name;
   @HiveField(2)
-  int initialPrice;
+  int price;
   @HiveField(3)
   int maxLvl;
   @HiveField(4)
   int currentLvl;
   @HiveField(5)
-  double hitInitialBonus;
+  int updateValue;
   @HiveField(6)
-  double churchInitialBonus;
-  @HiveField(7)
-  double hitMultiplier;
-  @HiveField(8)
-  double priceMultiplier;
-  @HiveField(9)
   String imgPath;
+  @HiveField(7)
+  double priceMultiplier;
 
   UpgradeModel({
     required this.imgPath,
     required this.id,
     required this.name,
-    required this.churchInitialBonus,
     required this.currentLvl,
-    required this.hitInitialBonus,
-    required this.initialPrice,
+    required this.updateValue,
+    required this.price,
     required this.maxLvl,
-    required this.hitMultiplier,
     required this.priceMultiplier,
   });
 }
