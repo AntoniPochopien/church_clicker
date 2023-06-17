@@ -39,14 +39,14 @@ class HiveCubit extends Cubit<HiveState> {
     List<UpgradeModel>? ownedUpgrades,
     List<UpgradeModel>? ownedUpgradesChurchDb,
   }) {
-    if (state.highestEarnings < (earnedMoney ?? 0)) {
-      emit(state.copyWith(highestEarnings: state.earnedMoney));
-      box.put('highestEarnings', earnedMoney ?? state.earnedMoney);
-    }
     box.put('earnedMoney', earnedMoney ?? state.earnedMoney);
     box.put(
         'ownedUpgradesPriestDb', ownedUpgrades ?? state.ownedUpgradesPriestDb);
     box.put('ownedUpgradesChurchDb',
         ownedUpgradesChurchDb ?? state.ownedUpgradesChurchDb);
+    if (state.highestEarnings < (earnedMoney ?? 0)) {
+      box.put('highestEarnings', earnedMoney ?? state.earnedMoney);
+      state.highestEarnings = earnedMoney ?? state.earnedMoney;
+    }
   }
 }
