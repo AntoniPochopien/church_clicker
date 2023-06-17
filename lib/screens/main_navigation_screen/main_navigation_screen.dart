@@ -1,4 +1,3 @@
-import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 
 import 'package:flutter/material.dart';
@@ -13,15 +12,29 @@ import '../fortune_wheel_screen/fortune_wheel_screen.dart';
 import '../shop_screen/shop_screen.dart';
 import '../../widgets/pentagon_custom_clipper.dart';
 
-class MainNavigationScreen extends StatelessWidget {
-  MainNavigationScreen({super.key});
+class MainNavigationScreen extends StatefulWidget {
+  const MainNavigationScreen({super.key});
 
+  static const String route = '/MainNavigationScreen';
+
+  @override
+  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+}
+
+class _MainNavigationScreenState extends State<MainNavigationScreen> {
   final List<Widget> bodyContentList = [
     const PriestScreen(),
     const ChurchScreen(),
     const ShopScreen(),
     const FortuneWheelScreen(),
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BlocProvider.of<HiveCubit>(context, listen: false).save();
+  }
 
   Widget buttonBuilder({required BuildContext context, required int index}) {
     return Expanded(
@@ -63,50 +76,40 @@ class MainNavigationScreen extends StatelessWidget {
       builder: (context, navState) {
         return BlocBuilder<AbilitiesCubit, AbilitiesState>(
           builder: (context, abilitiesState) {
-            return BlocListener<HiveCubit, HiveState>(
-              listener: (context, hiveState) {
-                BlocProvider.of<AbilitiesCubit>(context).setFromDb(
-                    earnedMoneyDb: hiveState.earnedMoney,
-                    ownedUpgradesDb: hiveState.ownedUpgradesPriestDb);
-                BlocProvider.of<ChurchCubit>(context).setOwnedUpgradesFromDb(
-                  ownedUpgradesChurch: hiveState.ownedUpgradesChurchDb,
-                );
-              },
-              child: Scaffold(
-                extendBodyBehindAppBar: true,
-                extendBody: true,
-                appBar: AppBar(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  centerTitle: true,
-                  title: Text(
-                    abilitiesState.earnedMoney.toInt().toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 55),
-                  ),
+            return Scaffold(
+              extendBodyBehindAppBar: true,
+              extendBody: true,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                centerTitle: true,
+                title: Text(
+                  abilitiesState.earnedMoney.toInt().toString(),
+                  style: const TextStyle(color: Colors.white, fontSize: 55),
                 ),
-                body: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 200),
-                  child: IndexedStack(
-                    key: ValueKey<int>(navState.currentIndex),
-                    index: navState.currentIndex,
-                    children: bodyContentList,
-                  ),
+              ),
+              body: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: IndexedStack(
+                  key: ValueKey<int>(navState.currentIndex),
+                  index: navState.currentIndex,
+                  children: bodyContentList,
                 ),
-                bottomNavigationBar: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxHeight: 100,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buttonBuilder(context: context, index: 0),
-                        buttonBuilder(context: context, index: 1),
-                        buttonBuilder(context: context, index: 2),
-                        buttonBuilder(context: context, index: 3),
-                      ],
-                    ),
+              ),
+              bottomNavigationBar: Padding(
+                padding: const EdgeInsets.all(16),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 100,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      buttonBuilder(context: context, index: 0),
+                      buttonBuilder(context: context, index: 1),
+                      buttonBuilder(context: context, index: 2),
+                      buttonBuilder(context: context, index: 3),
+                    ],
                   ),
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
+import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -34,7 +35,11 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MainNavigationScreen(),
+        initialRoute: '/FakeSplashscreen',
+        routes: {
+          '/FakeSplashscreen': (context) => const FakeSplashscreen(),
+          '/MainNavigationScreen': (context) => const MainNavigationScreen()
+        },
       ),
     );
   }

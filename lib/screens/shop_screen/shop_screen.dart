@@ -1,7 +1,5 @@
-import 'package:church_clicker/screens/shop_screen/widgets/church_items_list.dart';
+import 'package:church_clicker/screens/shop_screen/widgets/items_list.dart';
 import 'package:flutter/material.dart';
-
-import './widgets/priest_items_list.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -37,11 +35,11 @@ class _ShopScreenState extends State<ShopScreen> {
               children: const [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 19.0),
-                  child: PriestItemList(),
+                  child: ItemsList(isChurch: false, title: 'Ulepsz Księdza xd'),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 19.0),
-                  child: ChurchItemsList(),
+                  child: ItemsList(isChurch: true, title: 'ulepsz kościół'),
                 ),
               ],
             ),

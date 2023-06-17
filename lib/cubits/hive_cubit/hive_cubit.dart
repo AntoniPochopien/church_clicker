@@ -9,6 +9,7 @@ class HiveCubit extends Cubit<HiveState> {
   HiveCubit()
       : super(
           HiveState(
+            isLoaded: false,
             highestEarnings: 0,
             earnedMoney: 0,
             ownedUpgradesPriestDb: [],
@@ -30,6 +31,7 @@ class HiveCubit extends Cubit<HiveState> {
         ownedUpgradesChurchDb:
             box.get('ownedUpgradesChurchDb')?.cast<UpgradeModel>().toList() ??
                 [],
+        isLoaded: true,
       ),
     );
   }

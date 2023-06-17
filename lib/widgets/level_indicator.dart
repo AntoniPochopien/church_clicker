@@ -15,8 +15,9 @@ class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
 
   Tween<double> lvlInterval(double v) {
-    if (v > 0 && v <= 10000) {
-      return Tween(begin: 0, end: 10000);
+    if (v > 0 && v <= 100) {
+      //10000
+      return Tween(begin: 0, end: 100); //10000
     } else if (v > 10000 && v <= 100000) {
       return Tween(begin: 10000, end: 100000);
     } else if (v > 100000 && v <= 500000) {
@@ -88,16 +89,15 @@ class _LevelIndicatorState extends State<LevelIndicator> {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                        child: Row(
-                          children: [
-                            AnimatedContainer(
-                              height: 10,
-                              width: _calculateLevelWidth(
-                                  highestEarnings: hiveState.highestEarnings),
-                              duration: const Duration(milliseconds: 300),
-                              color: Colors.amber,
-                            ),
-                          ],
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: AnimatedContainer(
+                            height: 10,
+                            width: _calculateLevelWidth(
+                                highestEarnings: hiveState.highestEarnings),
+                            duration: const Duration(milliseconds: 300),
+                            color: Colors.amber,
+                          ),
                         ),
                       ),
                     ),
