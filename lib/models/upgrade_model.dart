@@ -20,11 +20,8 @@ class UpgradeModel {
   String imgPath;
   @HiveField(7)
   double priceMultiplier;
-  @HiveField(8)
-  int exp;
 
   UpgradeModel({
-    required this.exp,
     required this.imgPath,
     required this.id,
     required this.name,

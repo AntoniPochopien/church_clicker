@@ -2,13 +2,11 @@ part of 'hive_cubit.dart';
 
 class HiveState {
   double earnedMoney;
-  int churchExp;
-  int priestExp;
+  double highestEarnings;
   List<UpgradeModel> ownedUpgradesPriestDb;
   List<UpgradeModel> ownedUpgradesChurchDb;
   HiveState({
-    required this.churchExp,
-    required this.priestExp,
+    required this.highestEarnings,
     required this.earnedMoney,
     required this.ownedUpgradesPriestDb,
     required this.ownedUpgradesChurchDb,
@@ -18,12 +16,10 @@ class HiveState {
     double? earnedMoney,
     List<UpgradeModel>? ownedUpgradesPriestDb,
     List<UpgradeModel>? ownedUpgradesChurchDb,
-    int? churchExp,
-    int? priestExp,
+    double? highestEarnings,
   }) {
     return HiveState(
-      churchExp: churchExp ?? this.churchExp,
-      priestExp: priestExp ?? this.priestExp,
+      highestEarnings: highestEarnings ?? this.highestEarnings,
       ownedUpgradesChurchDb:
           ownedUpgradesChurchDb ?? this.ownedUpgradesChurchDb,
       earnedMoney: earnedMoney ?? this.earnedMoney,

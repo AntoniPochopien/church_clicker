@@ -26,7 +26,6 @@ class ChurchItemsList extends StatelessWidget {
               updateValue: 0,
               name: '',
               imgPath: '',
-              exp: 0,
             ),
           )
           .currentLvl;
@@ -36,6 +35,7 @@ class ChurchItemsList extends StatelessWidget {
     return BlocBuilder<ChurchCubit, ChurchState>(
       builder: (context, churchState) {
         return SafeArea(
+          bottom: false,
           child: Column(
             children: [
               const Text(

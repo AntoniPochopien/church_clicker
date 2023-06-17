@@ -11,7 +11,6 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
   AbilitiesCubit()
       : super(
           AbilitiesState(
-            exp: 0,
             earnedMoney: 0,
             ownedUpgradesPriest: [],
           ),
@@ -37,7 +36,7 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     }
 
     calculateTapPower();
-    calculateExp();
+
     emit(
       state.copyWith(
         ownedUpgradesPriest: state.ownedUpgradesPriest,
@@ -46,7 +45,6 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     );
 
     hiveCubit.save(
-      priestExp: state.exp,
       earnedMoney: state.earnedMoney,
       ownedUpgrades: state.ownedUpgradesPriest,
     );
@@ -62,18 +60,15 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
   }
 
   void setFromDb(
-      {required int exp,
-      required double earnedMoneyDb,
+      {required double earnedMoneyDb,
       required List<UpgradeModel> ownedUpgradesDb}) {
     emit(
       state.copyWith(
-        exp: exp,
         earnedMoney: earnedMoneyDb,
         ownedUpgradesPriest: ownedUpgradesDb,
       ),
     );
     calculateTapPower();
-    calculateExp();
   }
 
   void tap() {
@@ -81,15 +76,6 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
       state.copyWith(earnedMoney: state.earnedMoney += tapValue),
     );
     hiveCubit.save(earnedMoney: state.earnedMoney);
-  }
-
-  void calculateExp() {
-    int x = 0;
-    state.ownedUpgradesPriest.forEach((element) {
-      x += element.exp * element.currentLvl;
-    });
-    print('exp ppoliczony $x');
-    emit(state.copyWith(exp: x));
   }
 
   void calculateTapPower() {

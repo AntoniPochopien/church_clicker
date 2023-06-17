@@ -25,7 +25,6 @@ class PriestItemList extends StatelessWidget {
               updateValue: 0,
               name: '',
               imgPath: '',
-              exp: 0,
             ),
           )
           .currentLvl;

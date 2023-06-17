@@ -14,7 +14,6 @@ class ChurchCubit extends Cubit<ChurchState> {
   ChurchCubit()
       : super(
           ChurchState(
-            exp: 0,
             churchEarnings: 0,
             ownedUpgradesChurch: [],
           ),
@@ -28,7 +27,7 @@ class ChurchCubit extends Cubit<ChurchState> {
     hiveCubit = ctx.read<HiveCubit>();
     abilitiesCubit = ctx.read<AbilitiesCubit>();
     calculateChurchPower();
-    calculateExp();
+
     streamSubscription = Stream.periodic(
       const Duration(seconds: 1),
     ).listen(
@@ -39,17 +38,14 @@ class ChurchCubit extends Cubit<ChurchState> {
   }
 
   void setOwnedUpgradesFromDb({
-    required int exp,
     required List<UpgradeModel> ownedUpgradesChurch,
   }) {
     emit(
       state.copyWith(
-        exp: exp,
         ownedUpgradesChurch: ownedUpgradesChurch,
       ),
     );
     calculateChurchPower();
-    calculateExp();
   }
 
   void buyUpgrade({required int upgradeId, required int price}) {
@@ -71,19 +67,10 @@ class ChurchCubit extends Cubit<ChurchState> {
       ),
     );
     calculateChurchPower();
-    calculateExp();
+
     hiveCubit.save(
-      churchExp: state.exp,
       ownedUpgradesChurchDb: state.ownedUpgradesChurch,
     );
-  }
-
-  void calculateExp() {
-    int x = 0;
-    state.ownedUpgradesChurch.forEach((element) {
-      x += element.exp * element.currentLvl;
-    });
-    emit(state.copyWith(exp: x));
   }
 
   void calculateChurchPower() {
