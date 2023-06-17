@@ -50,8 +50,7 @@ class ChurchItemsList extends StatelessWidget {
                       final ownedLvl = _calcualteOwnedLvl(
                           upgradeId: item.id,
                           ownedUpgradeIdList: churchState.ownedUpgradesChurch);
-                      final price =
-                          item.price * (ownedLvl * item.priceMultiplier);
+                      final price = item.price * item.priceMultiplier;
 
                       return BlocBuilder<AbilitiesCubit, AbilitiesState>(
                         builder: (context, abilitiesState) {

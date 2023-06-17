@@ -1,6 +1,7 @@
 import 'package:church_clicker/models/upgrade_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:math' as math;
 
 import '../../../data/shop_items.dart';
 import '../../../cubits/abilities_cubit/abilities_cubit.dart';
@@ -40,7 +41,8 @@ class PriestItemList extends StatelessWidget {
               final ownedLvl = _calcualteOwnedLvl(
                   upgradeId: item.id,
                   ownedUpgradeIdList: abilitiesState.ownedUpgradesPriest);
-              final price = item.price * (ownedLvl * item.priceMultiplier);
+              final price = item.price *
+                  math.pow(item.priceMultiplier, item.currentLvl - 1);
 
               return BlocBuilder<AbilitiesCubit, AbilitiesState>(
                 builder: (context, abilitiesState) {
