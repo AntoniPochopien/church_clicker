@@ -3,6 +3,7 @@ import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/models/upgrade_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:math' as math;
 
 import '../../../data/shop_items.dart';
 import './item_widget.dart';
@@ -44,7 +45,7 @@ class ItemsList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -60,7 +61,8 @@ class ItemsList extends StatelessWidget {
                               ownedUpgradeIdList: isChurch
                                   ? churchState.ownedUpgradesChurch
                                   : abilitiesState.ownedUpgradesPriest);
-                          final price = item.price * item.priceMultiplier;
+                          final price = item.price *
+                              math.pow(item.priceMultiplier, ownedLvl);
 
                           return BlocBuilder<AbilitiesCubit, AbilitiesState>(
                             builder: (context, abilitiesState) {
@@ -80,7 +82,8 @@ class ItemsList extends StatelessWidget {
                                 maxLvl: item.maxLvl,
                                 name: item.name,
                                 ownedLvl: ownedLvl,
-                                price: price != 0 ? price.toInt() : item.price,
+                                price:
+                                    ownedLvl != 0 ? price.toInt() : item.price,
                               );
                             },
                           );

@@ -6,7 +6,7 @@ class ShopItems {
       id: 1,
       name: 'Różaniec',
       updateValue: 1,
-      priceMultiplier: 1.0,
+      priceMultiplier: 1.1,
       currentLvl: 0,
       price: 100,
       maxLvl: 100,
