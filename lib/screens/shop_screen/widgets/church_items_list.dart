@@ -57,9 +57,8 @@ class ChurchItemsList extends StatelessWidget {
                           return ItemWidget(
                             upgradeValue: item.updateValue,
                             imgPath: item.imgPath,
-                            isAvaliable:
-                                abilitiesState.earnedMoney >= price.toInt() &&
-                                    item.maxLvl >= ownedLvl,
+                            isAvaliable: abilitiesState.earnedMoney >= price &&
+                                item.maxLvl > ownedLvl,
                             isPriestUpgrade: false,
                             onTap: BlocProvider.of<ChurchCubit>(context)
                                 .buyUpgrade,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 class FortuneWheelScreen extends StatefulWidget {
-  FortuneWheelScreen({super.key});
+  const FortuneWheelScreen({super.key});
 
   @override
   State<FortuneWheelScreen> createState() => _FortuneWheelScreenState();
@@ -49,7 +49,7 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                     wonPrize = listaNagrod[randomPosition];
                   });
                 },
-                child: Text('spin')),
+                child: const Text('spin')),
           )
         ],
       ),

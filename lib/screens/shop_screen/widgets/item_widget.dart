@@ -35,7 +35,7 @@ class ItemWidget extends StatelessWidget {
         onTap: () {
           if (isAvaliable) {
             //abilitiesState.earnedMoney >= price.toInt() && maxLvl >= ownedLvl
-            onTap(upgradeId: id, price: price.round());
+            onTap(upgradeId: id, price: price);
           }
         },
         child: Padding(
@@ -95,7 +95,9 @@ class ItemWidget extends StatelessWidget {
                                   fontSize: 24, color: Colors.red),
                             ),
                             Text(
-                              '+ ${upgradeValue}/s',
+                              isPriestUpgrade
+                                  ? '+ $upgradeValue'
+                                  : '+ $upgradeValue/s',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black.withOpacity(0.5)),

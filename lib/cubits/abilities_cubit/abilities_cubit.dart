@@ -34,9 +34,6 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     } else {
       state.ownedUpgradesPriest[result].currentLvl += 1;
     }
-    state.ownedUpgradesPriest.forEach(
-      (element) => print(element.currentLvl),
-    );
 
     calculateTapPower();
     emit(

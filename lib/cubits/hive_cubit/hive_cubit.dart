@@ -9,6 +9,8 @@ class HiveCubit extends Cubit<HiveState> {
   HiveCubit()
       : super(
           HiveState(
+            churchExp: 0,
+            priestExp: 0,
             earnedMoney: 0,
             ownedUpgradesPriestDb: [],
             ownedUpgradesChurchDb: [],
@@ -33,10 +35,14 @@ class HiveCubit extends Cubit<HiveState> {
   }
 
   void save({
+    int? churchExp,
+    int? priestExp,
     double? earnedMoney,
     List<UpgradeModel>? ownedUpgrades,
     List<UpgradeModel>? ownedUpgradesChurchDb,
   }) {
+    box.put('churchExp', churchExp ?? state.churchExp);
+    box.put('priestExp', priestExp ?? state.priestExp);
     box.put('earnedMoney', earnedMoney ?? state.earnedMoney);
     box.put(
         'ownedUpgradesPriestDb', ownedUpgrades ?? state.ownedUpgradesPriestDb);

@@ -49,7 +49,7 @@ class PriestItemList extends StatelessWidget {
                     imgPath: item.imgPath,
                     isPriestUpgrade: true,
                     isAvaliable: abilitiesState.earnedMoney >= price.toInt() &&
-                        item.maxLvl >= ownedLvl,
+                        item.maxLvl > ownedLvl,
                     onTap: BlocProvider.of<AbilitiesCubit>(context).buyUpgrade,
                     id: item.id,
                     maxLvl: item.maxLvl,

@@ -14,7 +14,7 @@ class LevelIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
+      child: SizedBox(
           width: double.infinity,
           height: 60,
           child: Padding(

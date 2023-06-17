@@ -20,7 +20,7 @@ class MainNavigationScreen extends StatelessWidget {
     const PriestScreen(),
     const ChurchScreen(),
     const ShopScreen(),
-    FortuneWheelScreen(),
+    const FortuneWheelScreen(),
   ];
 
   Widget buttonBuilder({required BuildContext context, required int index}) {
@@ -85,7 +85,7 @@ class MainNavigationScreen extends StatelessWidget {
                   ),
                 ),
                 body: AnimatedSwitcher(
-                  duration: Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 200),
                   child: IndexedStack(
                     key: ValueKey<int>(navState.currentIndex),
                     index: navState.currentIndex,

@@ -31,7 +31,6 @@ class ChurchCubit extends Cubit<ChurchState> {
       const Duration(seconds: 1),
     ).listen(
       (event) {
-        print(state.churchEarnings);
         abilitiesCubit.addEarningsFromChurch(state.churchEarnings);
       },
     );
@@ -51,7 +50,6 @@ class ChurchCubit extends Cubit<ChurchState> {
   void buyUpgrade({required int upgradeId, required int price}) {
     final result = state.ownedUpgradesChurch
         .indexWhere((element) => element.id == upgradeId);
-    print(upgradeId);
     if (result < 0) {
       final item = ShopItems.churchItems
           .firstWhere((element) => element.id == upgradeId);
@@ -60,9 +58,6 @@ class ChurchCubit extends Cubit<ChurchState> {
     } else {
       state.ownedUpgradesChurch[result].currentLvl += 1;
     }
-    state.ownedUpgradesChurch.forEach(
-      (element) => print(element.currentLvl),
-    );
 
     abilitiesCubit.addEarningsFromChurch(-price.toDouble());
     emit(
