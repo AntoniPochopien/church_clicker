@@ -17,6 +17,7 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return UpgradeModel(
+      exp: fields[8] as int,
       imgPath: fields[6] as String,
       id: fields[0] as int,
       name: fields[1] as String,
@@ -31,7 +32,7 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
   @override
   void write(BinaryWriter writer, UpgradeModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class UpgradeModelAdapter extends TypeAdapter<UpgradeModel> {
       ..writeByte(6)
       ..write(obj.imgPath)
       ..writeByte(7)
-      ..write(obj.priceMultiplier);
+      ..write(obj.priceMultiplier)
+      ..writeByte(8)
+      ..write(obj.exp);
   }
 
   @override

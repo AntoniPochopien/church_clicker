@@ -61,7 +61,7 @@ class LevelIndicator extends StatelessWidget {
                         children: [
                           AnimatedContainer(
                             height: 10,
-                            width: 150,
+                            width: currentExp.toDouble(),
                             duration: Duration(milliseconds: 300),
                             color: Colors.amber,
                           ),

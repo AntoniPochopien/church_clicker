@@ -66,9 +66,11 @@ class MainNavigationScreen extends StatelessWidget {
             return BlocListener<HiveCubit, HiveState>(
               listener: (context, hiveState) {
                 BlocProvider.of<AbilitiesCubit>(context).setFromDb(
+                    exp: hiveState.priestExp,
                     earnedMoneyDb: hiveState.earnedMoney,
                     ownedUpgradesDb: hiveState.ownedUpgradesPriestDb);
                 BlocProvider.of<ChurchCubit>(context).setOwnedUpgradesFromDb(
+                  exp: hiveState.churchExp,
                   ownedUpgradesChurch: hiveState.ownedUpgradesChurchDb,
                 );
               },

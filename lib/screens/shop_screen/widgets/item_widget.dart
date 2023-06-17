@@ -90,7 +90,7 @@ class ItemWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              price.toInt().toString(),
+                              price.toString(),
                               style: const TextStyle(
                                   fontSize: 24, color: Colors.red),
                             ),

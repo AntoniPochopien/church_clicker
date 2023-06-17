@@ -10,18 +10,22 @@ class PriestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => BlocProvider.of<AbilitiesCubit>(context).tap(),
-      child: Stack(
-        children: [
-          SvgPicture.asset(
-            'assets/images/svg/active/active_bg_1.svg',
-            fit: BoxFit.cover,
+    return BlocBuilder<AbilitiesCubit, AbilitiesState>(
+      builder: (context, abilitiesState) {
+        return GestureDetector(
+          onTap: () => BlocProvider.of<AbilitiesCubit>(context).tap(),
+          child: Stack(
+            children: [
+              SvgPicture.asset(
+                'assets/images/svg/active/active_bg_1.svg',
+                fit: BoxFit.cover,
+              ),
+              SvgPicture.asset('assets/images/svg/active/active_lvl_1.svg'),
+              LevelIndicator(currentExp: abilitiesState.exp, nextLvlExp: 100)
+            ],
           ),
-          SvgPicture.asset('assets/images/svg/active/active_lvl_1.svg'),
-          const LevelIndicator(currentExp: 20, nextLvlExp: 100)
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -10,6 +10,7 @@ class ShopItems {
       priceMultiplier: 1,
       price: 10,
       maxLvl: 100,
+      exp: 2,
       imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
     UpgradeModel(
@@ -20,6 +21,7 @@ class ShopItems {
       priceMultiplier: 1.2,
       price: 150,
       maxLvl: 50,
+      exp: 1,
       imgPath: 'assets/images/svg/shop_passive/passive_item_2.svg',
     ),
     UpgradeModel(
@@ -30,6 +32,7 @@ class ShopItems {
       priceMultiplier: 1.4,
       price: 150,
       maxLvl: 50,
+      exp: 1,
       imgPath: 'assets/images/svg/shop_passive/passive_item_3.svg',
     ),
     UpgradeModel(
@@ -40,6 +43,7 @@ class ShopItems {
       priceMultiplier: 1.6,
       price: 150,
       maxLvl: 50,
+      exp: 3,
       imgPath: 'assets/images/svg/shop_passive/passive_item_4.svg',
     ),
   ];
@@ -53,6 +57,7 @@ class ShopItems {
       currentLvl: 0,
       price: 10,
       maxLvl: 100,
+      exp: 2,
       imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
     UpgradeModel(
@@ -63,6 +68,7 @@ class ShopItems {
       currentLvl: 0,
       price: 150,
       maxLvl: 50,
+      exp: 3,
       imgPath: 'assets/images/svg/shop_passive/passive_item_2.svg',
     ),
   ];
