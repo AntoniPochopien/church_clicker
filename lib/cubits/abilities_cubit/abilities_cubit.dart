@@ -50,7 +50,7 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     );
   }
 
-  void addEarningsFromChurch(double v) {
+  void addEarningsFromChurch({required double v}) {
     emit(
       state.copyWith(
         earnedMoney: state.earnedMoney + v,
@@ -76,6 +76,7 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
       state.copyWith(earnedMoney: state.earnedMoney += tapValue),
     );
     hiveCubit.save(earnedMoney: state.earnedMoney);
+    hiveCubit.saveAllEarings(priestEarings: tapValue);
   }
 
   void calculateTapPower() {

@@ -14,14 +14,20 @@ class ChurchScreen extends StatelessWidget {
       builder: (context, levelState) {
         return BlocBuilder<ChurchCubit, ChurchState>(
           builder: (context, churchState) {
+            int churchLvl =
+                churchState.ownedUpgradesChurch.map((e) => e.id).contains(11)
+                    ? churchState.ownedUpgradesChurch
+                        .firstWhere((element) => element.id == 11)
+                        .currentLvl
+                    : 0;
             return Stack(children: [
               SvgPicture.asset(
                 'assets/images/svg/passive/passive_bg_1.svg',
                 fit: BoxFit.cover,
               ),
-              if (churchState.ownedUpgradesChurch.map((e) => e.id).contains(11))
+              if (churchLvl != 0)
                 SvgPicture.asset(
-                    'assets/images/svg/passive/passive_lvl_${levelState.lvl}.svg'),
+                    'assets/images/svg/passive/passive_lvl_${churchLvl}.svg'),
               const LevelIndicator()
             ]);
           },

@@ -110,9 +110,9 @@ class ShopItems {
       name: 'Kościół',
       currentLvl: 0,
       updateValue: 10,
-      priceMultiplier: 2.1,
+      priceMultiplier: 10,
       price: 1,
-      maxLvl: 100,
+      maxLvl: 6,
       imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
     UpgradeModel(

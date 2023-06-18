@@ -105,7 +105,7 @@ class _LevelIndicatorState extends State<LevelIndicator> {
                           child: AnimatedContainer(
                             height: 10,
                             width: _calculateLevelWidth(
-                                highestEarnings: hiveState.highestEarnings),
+                                highestEarnings: hiveState.allEarings),
                             duration: const Duration(milliseconds: 300),
                             color: Colors.amber,
                           ),

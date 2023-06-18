@@ -10,7 +10,7 @@ class HiveCubit extends Cubit<HiveState> {
       : super(
           HiveState(
             isLoaded: false,
-            highestEarnings: 0,
+            allEarings: 0,
             earnedMoney: 0,
             ownedUpgradesPriestDb: [],
             ownedUpgradesChurchDb: [],
@@ -23,7 +23,7 @@ class HiveCubit extends Cubit<HiveState> {
     box = await Hive.openBox('MyBox');
     emit(
       state.copyWith(
-        highestEarnings: box.get('highestEarnings') ?? 0,
+        allEarings: box.get('allEarings') ?? 0,
         earnedMoney: box.get('earnedMoney') ?? 0,
         ownedUpgradesPriestDb:
             box.get('ownedUpgradesPriestDb')?.cast<UpgradeModel>().toList() ??
@@ -38,6 +38,7 @@ class HiveCubit extends Cubit<HiveState> {
 
   void save({
     double? earnedMoney,
+    double? allEarings,
     List<UpgradeModel>? ownedUpgrades,
     List<UpgradeModel>? ownedUpgradesChurchDb,
   }) {
@@ -46,11 +47,12 @@ class HiveCubit extends Cubit<HiveState> {
         'ownedUpgradesPriestDb', ownedUpgrades ?? state.ownedUpgradesPriestDb);
     box.put('ownedUpgradesChurchDb',
         ownedUpgradesChurchDb ?? state.ownedUpgradesChurchDb);
-    if (state.highestEarnings < (earnedMoney ?? 0)) {
-      box.put('highestEarnings', earnedMoney ?? state.earnedMoney);
-      emit(
-        state.copyWith(highestEarnings: earnedMoney),
-      );
-    }
+  }
+
+  void saveAllEarings({required double priestEarings}) {
+    box.put('allEarings', state.allEarings + priestEarings);
+    emit(
+      state.copyWith(allEarings: state.allEarings + priestEarings),
+    );
   }
 }

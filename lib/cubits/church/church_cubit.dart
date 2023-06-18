@@ -32,7 +32,7 @@ class ChurchCubit extends Cubit<ChurchState> {
       const Duration(seconds: 1),
     ).listen(
       (event) {
-        abilitiesCubit.addEarningsFromChurch(state.churchEarnings);
+        abilitiesCubit.addEarningsFromChurch(v: state.churchEarnings);
       },
     );
   }
@@ -60,7 +60,7 @@ class ChurchCubit extends Cubit<ChurchState> {
       state.ownedUpgradesChurch[result].currentLvl += 1;
     }
 
-    abilitiesCubit.addEarningsFromChurch(-price.toDouble());
+    abilitiesCubit.addEarningsFromChurch(v: -price.toDouble());
     emit(
       state.copyWith(
         ownedUpgradesChurch: state.ownedUpgradesChurch,

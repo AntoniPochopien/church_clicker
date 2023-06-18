@@ -24,7 +24,7 @@ class PriestScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   SvgPicture.asset(
-                      'assets/images/svg/active/active_lvl_${levelState.lvl}.svg'),
+                      'assets/images/svg/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.svg'),
                   const LevelIndicator()
                 ],
               ),
