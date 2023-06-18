@@ -1,3 +1,4 @@
+import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/widgets/level_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,20 +11,25 @@ class PriestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AbilitiesCubit, AbilitiesState>(
-      builder: (context, abilitiesState) {
-        return GestureDetector(
-          onTap: () => BlocProvider.of<AbilitiesCubit>(context).tap(),
-          child: Stack(
-            children: [
-              SvgPicture.asset(
-                'assets/images/svg/active/active_bg_1.svg',
-                fit: BoxFit.cover,
+    return BlocBuilder<LevelCubit, LevelState>(
+      builder: (context, levelState) {
+        return BlocBuilder<AbilitiesCubit, AbilitiesState>(
+          builder: (context, abilitiesState) {
+            return GestureDetector(
+              onTap: () => BlocProvider.of<AbilitiesCubit>(context).tap(),
+              child: Stack(
+                children: [
+                  SvgPicture.asset(
+                    'assets/images/svg/active/active_bg_1.svg',
+                    fit: BoxFit.cover,
+                  ),
+                  SvgPicture.asset(
+                      'assets/images/svg/active/active_lvl_${levelState.lvl}.svg'),
+                  const LevelIndicator()
+                ],
               ),
-              SvgPicture.asset('assets/images/svg/active/active_lvl_1.svg'),
-              const LevelIndicator()
-            ],
-          ),
+            );
+          },
         );
       },
     );

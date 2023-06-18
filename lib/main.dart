@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
+import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => LevelCubit()),
         BlocProvider(create: (context) => NavigationCubit()),
         BlocProvider(create: (context) => HiveCubit()..start()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),

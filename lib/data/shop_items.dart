@@ -111,7 +111,7 @@ class ShopItems {
       currentLvl: 0,
       updateValue: 10,
       priceMultiplier: 2.1,
-      price: 10000,
+      price: 1,
       maxLvl: 100,
       imgPath: 'assets/images/svg/shop_passive/passive_item_1.svg',
     ),
