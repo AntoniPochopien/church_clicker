@@ -48,7 +48,9 @@ class HiveCubit extends Cubit<HiveState> {
         ownedUpgradesChurchDb ?? state.ownedUpgradesChurchDb);
     if (state.highestEarnings < (earnedMoney ?? 0)) {
       box.put('highestEarnings', earnedMoney ?? state.earnedMoney);
-      state.highestEarnings = earnedMoney ?? state.earnedMoney;
+      emit(
+        state.copyWith(highestEarnings: earnedMoney),
+      );
     }
   }
 }

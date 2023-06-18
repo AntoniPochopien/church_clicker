@@ -15,6 +15,7 @@ class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
 
   Tween<double> lvlInterval(double v) {
+    print(v);
     if (v > 0 && v <= 100) {
       //10000
       return Tween(begin: 0, end: 100); //10000

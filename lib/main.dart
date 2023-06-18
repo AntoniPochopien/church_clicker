@@ -11,6 +11,7 @@ import './cubits/abilities_cubit/abilities_cubit.dart';
 import './models/upgrade_model.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(UpgradeModelAdapter());
   runApp(const MyApp());
