@@ -42,11 +42,12 @@ class ItemWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            color: (isAvaliable) //abilitiesState.earnedMoney >= price.toInt()
-                ? Colors.white
-                : (maxLvl >= ownedLvl)
-                    ? Colors.grey
-                    : Colors.amber,
+            color: (maxLvl <=
+                    ownedLvl) //abilitiesState.earnedMoney >= price.toInt()
+                ? Colors.amber
+                : isAvaliable
+                    ? Colors.white
+                    : Colors.grey,
             child: Padding(
               padding: const EdgeInsets.all(0),
               child: Container(
@@ -89,11 +90,12 @@ class ItemWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              price.toString(),
-                              style: const TextStyle(
-                                  fontSize: 24, color: Colors.red),
-                            ),
+                            if (!(maxLvl <= ownedLvl))
+                              Text(
+                                price.toString(),
+                                style: const TextStyle(
+                                    fontSize: 24, color: Color(0xFFA80022)),
+                              ),
                             Text(
                               isPriestUpgrade
                                   ? '+ $upgradeValue'

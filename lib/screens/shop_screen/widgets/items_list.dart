@@ -45,7 +45,7 @@ class ItemsList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white, fontSize: 33),
                   ),
                   Expanded(
                     child: ListView.builder(

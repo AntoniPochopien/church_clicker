@@ -17,7 +17,6 @@ class _LevelIndicatorState extends State<LevelIndicator> {
 
   Tween<double> lvlInterval(double v) {
     final levelCubit = BlocProvider.of<LevelCubit>(context, listen: false);
-    print('dupa interval $v');
     if (v >= 0 && v <= 100) {
       //10000
       levelCubit.setLvl(lvl: 1);
@@ -45,7 +44,6 @@ class _LevelIndicatorState extends State<LevelIndicator> {
     final interval = lvlInterval(highestEarnings);
     final x = (100 * highestEarnings) / interval.end!;
     final y = (x * size.width) / 100;
-    print('dupa obliczona szerokosc $y');
     return y;
   }
 

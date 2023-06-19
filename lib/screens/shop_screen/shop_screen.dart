@@ -1,5 +1,6 @@
-import 'package:church_clicker/screens/shop_screen/widgets/items_list.dart';
 import 'package:flutter/material.dart';
+
+import '../shop_screen/widgets/items_list.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -35,7 +36,7 @@ class _ShopScreenState extends State<ShopScreen> {
               children: const [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 19.0),
-                  child: ItemsList(isChurch: false, title: 'Ulepsz Księdza xd'),
+                  child: ItemsList(isChurch: false, title: 'Ulepsz Księdza'),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 19.0),
@@ -46,33 +47,54 @@ class _ShopScreenState extends State<ShopScreen> {
           ),
           SafeArea(
             top: false,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 19,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 19.0, vertical: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8),
+                            bottomLeft: Radius.circular(8),
+                          ),
+                        ),
+                        backgroundColor: _pageIndex == 0
+                            ? const Color(0xFFA80022)
+                            : const Color(0xFFE10032),
+                      ),
+                      onPressed: () => changeIndex(0),
+                      child: const Text(
+                        'Ksiądz',
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
                     ),
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                _pageIndex == 0 ? Colors.red : Colors.pink),
-                        onPressed: () => changeIndex(0),
-                        child: const Icon(Icons.crop_square_sharp)),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 19),
+                  Expanded(
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                _pageIndex == 1 ? Colors.red : Colors.pink),
-                        onPressed: () => changeIndex(1),
-                        child: const Icon(Icons.crop_square_sharp)),
+                      style: ElevatedButton.styleFrom(
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          shape: const BeveledRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                            ),
+                          ),
+                          backgroundColor: _pageIndex == 1
+                              ? const Color(0xFFA80022)
+                              : const Color(0xFFE10032)),
+                      onPressed: () => changeIndex(1),
+                      child: const Text(
+                        'Kościół',
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           )
         ],
