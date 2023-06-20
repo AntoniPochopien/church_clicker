@@ -4,9 +4,11 @@ class HiveState {
   bool isLoaded;
   double earnedMoney;
   double allEarings;
+  int avaliableSpins;
   List<UpgradeModel> ownedUpgradesPriestDb;
   List<UpgradeModel> ownedUpgradesChurchDb;
   HiveState({
+    required this.avaliableSpins,
     required this.isLoaded,
     required this.allEarings,
     required this.earnedMoney,
@@ -20,8 +22,10 @@ class HiveState {
     List<UpgradeModel>? ownedUpgradesPriestDb,
     List<UpgradeModel>? ownedUpgradesChurchDb,
     double? allEarings,
+    int? avaliableSpins,
   }) {
     return HiveState(
+      avaliableSpins: avaliableSpins ?? this.avaliableSpins,
       isLoaded: isLoaded ?? this.isLoaded,
       allEarings: allEarings ?? this.allEarings,
       ownedUpgradesChurchDb:
