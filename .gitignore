@@ -1,6 +1,9 @@
 #lib
 lib/consts/ads_id.dart
 
+#android
+android/app/src/main/AndroidManifest.xml
+
 # Miscellaneous
 *.class
 *.log

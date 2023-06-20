@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:church_clicker/screens/fortune_wheel_screen/widgets/wheel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../services/google_ads_service.dart';
 
 class FortuneWheelScreen extends StatefulWidget {
   const FortuneWheelScreen({super.key});
@@ -15,16 +19,6 @@ class FortuneWheelScreen extends StatefulWidget {
 
 class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
   final StreamController<int> controller = StreamController<int>();
-  String wonPrize = '';
-
-  List<String> listaNagrod = [
-    '2',
-    '3',
-    '1.5',
-    '2',
-    '3',
-    '1.5',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,44 +55,10 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(bottom: 45.0),
-                          child: FortuneWheel(
-                            indicators: const [],
-                            alignment: Alignment.bottomCenter,
-                            animateFirst: false,
-                            physics: NoPanPhysics(),
-                            selected: controller.stream,
-                            items: [
-                              ...listaNagrod.asMap().entries.map(
-                                (e) {
-                                  int i = e.key;
-                                  String v = e.value;
-                                  return FortuneItem(
-                                    child: RotatedBox(
-                                        quarterTurns: 3, child: Text('x $v')),
-                                    style: FortuneItemStyle(
-                                      borderWidth: 3,
-                                      borderColor: Colors.black,
-                                      color: i % 2 == 0
-                                          ? const Color(0xFFA80022)
-                                          : const Color(0xFFE10032),
-                                      textStyle: const TextStyle(
-                                        fontFamily: 'PirataOne',
-                                        fontSize: 32,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                            onAnimationEnd: () =>
-                                ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(wonPrize),
-                              ),
-                            ),
-                          ),
-                        ),
+                            padding: const EdgeInsets.only(bottom: 45.0),
+                            child: Wheel(
+                              controller: controller,
+                            )),
                       ),
                       const SizedBox(
                         height: 50,
@@ -208,14 +168,23 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                setState(
-                                  () {
-                                    final randomPosition =
-                                        Fortune.randomInt(0, 5);
-                                    controller.add(randomPosition);
-                                    wonPrize = listaNagrod[randomPosition];
-                                  },
-                                );
+                                if (hiveState.avaliableSpins > 0) {
+                                  setState(
+                                    () {
+                                      BlocProvider.of<HiveCubit>(context)
+                                          .deleteSpin();
+                                      final randomPosition =
+                                          Random().nextInt(6);
+                                      controller.add(randomPosition);
+                                    },
+                                  );
+                                } else {
+                                  GoogleAdsService().showRewardedAd(
+                                      onEarnRewardCallback: () {
+                                    BlocProvider.of<HiveCubit>(context)
+                                        .addSpin(amount: 1);
+                                  });
+                                }
                               },
                               child: SizedBox(
                                 width: double.infinity,
