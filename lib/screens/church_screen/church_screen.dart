@@ -1,6 +1,5 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
-import 'package:church_clicker/widgets/level_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +27,6 @@ class ChurchScreen extends StatelessWidget {
               if (churchLvl != 0)
                 SvgPicture.asset(
                     'assets/images/svg/passive/passive_lvl_${churchLvl}.svg'),
-              const LevelIndicator()
             ]);
           },
         );

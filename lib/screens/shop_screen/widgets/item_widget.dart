@@ -47,7 +47,7 @@ class ItemWidget extends StatelessWidget {
                 ? Colors.amber
                 : isAvaliable
                     ? Colors.white
-                    : Colors.grey,
+                    : const Color(0xFFe2e2e6),
             child: Padding(
               padding: const EdgeInsets.all(0),
               child: Container(
@@ -74,7 +74,7 @@ class ItemWidget extends StatelessWidget {
                             style: TextStyle(fontSize: 24),
                           ),
                           Text(
-                            '${ownedLvl}/${maxLvl}',
+                            '${ownedLvl} / ${maxLvl}',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black.withOpacity(0.5)),

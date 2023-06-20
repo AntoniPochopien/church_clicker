@@ -186,33 +186,36 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                   });
                                 }
                               },
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Flexible(
-                                      child: FittedBox(
-                                        child: Text(
-                                          hiveState.avaliableSpins == 0
-                                              ? 'Obejrzyj reklamę aby zdobyć 1'
-                                                  .toUpperCase()
-                                              : 'Zakręć kołem za 1'
-                                                  .toUpperCase(),
-                                          style: const TextStyle(
-                                              fontSize: 33,
-                                              color: Colors.white),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(minHeight: 50),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Flexible(
+                                        child: FittedBox(
+                                          child: Text(
+                                            hiveState.avaliableSpins == 0
+                                                ? 'Obejrzyj reklamę aby zdobyć 1'
+                                                    .toUpperCase()
+                                                : 'Zakręć kołem za 1'
+                                                    .toUpperCase(),
+                                            style: const TextStyle(
+                                                fontSize: 33,
+                                                color: Colors.white),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 33,
-                                      width: 40,
-                                      child: SvgPicture.asset(
-                                        'assets/images/svg/general/gold.svg',
+                                      SizedBox(
+                                        height: 33,
+                                        width: 40,
+                                        child: SvgPicture.asset(
+                                          'assets/images/svg/general/gold.svg',
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

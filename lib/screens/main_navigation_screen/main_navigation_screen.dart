@@ -38,7 +38,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     GoogleAdsService().createRewardedAd();
   }
 
-  Widget buttonBuilder({required BuildContext context, required int index}) {
+  Widget buttonBuilder(
+      {required BuildContext context, required int i, required int pageIndex}) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(4),
@@ -48,10 +49,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             clipper: PentagonCustomClipper(),
             child: Stack(
               children: [
-                Container(
-                  color: Colors.white,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  color:
+                      pageIndex == i ? Colors.white : const Color(0xFFd2d2d9),
                   child: SvgPicture.asset(
-                    'assets/images/svg/menu/menu_${index + 1}.svg',
+                    'assets/images/svg/menu/menu_${i + 1}.svg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -60,7 +63,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: Colors.transparent,
                     child: InkWell(
                       onTap: () => BlocProvider.of<NavigationCubit>(context)
-                          .changeIndex(index),
+                          .changeIndex(i),
                     ),
                   ),
                 )
@@ -107,10 +110,22 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      buttonBuilder(context: context, index: 0),
-                      buttonBuilder(context: context, index: 1),
-                      buttonBuilder(context: context, index: 2),
-                      buttonBuilder(context: context, index: 3),
+                      buttonBuilder(
+                          context: context,
+                          i: 0,
+                          pageIndex: navState.currentIndex),
+                      buttonBuilder(
+                          context: context,
+                          i: 1,
+                          pageIndex: navState.currentIndex),
+                      buttonBuilder(
+                          context: context,
+                          i: 2,
+                          pageIndex: navState.currentIndex),
+                      buttonBuilder(
+                          context: context,
+                          i: 3,
+                          pageIndex: navState.currentIndex),
                     ],
                   ),
                 ),

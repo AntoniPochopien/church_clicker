@@ -63,8 +63,8 @@ class _ShopScreenState extends State<ShopScreen> {
                           ),
                         ),
                         backgroundColor: _pageIndex == 0
-                            ? const Color(0xFFA80022)
-                            : const Color(0xFFE10032),
+                            ? const Color(0xFFE10032)
+                            : const Color(0xFFA80022),
                       ),
                       onPressed: () => changeIndex(0),
                       child: const Text(
@@ -76,16 +76,17 @@ class _ShopScreenState extends State<ShopScreen> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          shape: const BeveledRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            bottomRight: Radius.circular(8),
                           ),
-                          backgroundColor: _pageIndex == 1
-                              ? const Color(0xFFA80022)
-                              : const Color(0xFFE10032)),
+                        ),
+                        backgroundColor: _pageIndex == 1
+                            ? const Color(0xFFE10032)
+                            : const Color(0xFFA80022),
+                      ),
                       onPressed: () => changeIndex(1),
                       child: const Text(
                         'Kościół',
