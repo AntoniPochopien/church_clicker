@@ -1,3 +1,6 @@
+#lib
+lib/consts/ads_id.dart
+
 # Miscellaneous
 *.class
 *.log

@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
+import 'package:church_clicker/services/google_ads_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<HiveCubit>(context, listen: false).save();
+    GoogleAdsService().createRewardedAd();
   }
 
   Widget buttonBuilder({required BuildContext context, required int index}) {
