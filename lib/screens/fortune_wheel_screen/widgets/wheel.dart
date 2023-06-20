@@ -5,17 +5,9 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 class Wheel extends StatelessWidget {
   final StreamController<int> controller;
+  final List<double> rewardsList;
 
-  const Wheel({super.key, required this.controller});
-
-  static const List<String> listaNagrod = [
-    '2',
-    '3',
-    '1.5',
-    '2',
-    '3',
-    '1.5',
-  ];
+  const Wheel({super.key, required this.controller, required this.rewardsList});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +18,10 @@ class Wheel extends StatelessWidget {
       physics: NoPanPhysics(),
       selected: controller.stream,
       items: [
-        ...listaNagrod.asMap().entries.map(
+        ...rewardsList.asMap().entries.map(
           (e) {
             int i = e.key;
-            String v = e.value;
+            String v = e.value.toString();
             return FortuneItem(
               child: RotatedBox(quarterTurns: 3, child: Text('x $v')),
               style: FortuneItemStyle(
