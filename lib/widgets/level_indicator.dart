@@ -17,24 +17,24 @@ class _LevelIndicatorState extends State<LevelIndicator> {
 
   Tween<double> lvlInterval(double v) {
     final levelCubit = BlocProvider.of<LevelCubit>(context, listen: false);
-    if (v >= 0 && v <= 100) {
+    if (v >= 0 && v <= 20) {
       levelCubit.setLvl(lvl: 1);
-      return Tween(begin: 0, end: 100);
-    } else if (v > 100 && v <= 100000) {
+      return Tween(begin: 0, end: 20);
+    } else if (v > 20 && v <= 40) {
       levelCubit.setLvl(lvl: 2);
-      return Tween(begin: 100, end: 100000);
-    } else if (v > 100000 && v <= 500000) {
+      return Tween(begin: 20, end: 40);
+    } else if (v > 40 && v <= 60) {
       levelCubit.setLvl(lvl: 3);
-      return Tween(begin: 100000, end: 500000);
-    } else if (v > 500000 && v <= 2500000) {
+      return Tween(begin: 40, end: 60);
+    } else if (v > 60 && v <= 80) {
       levelCubit.setLvl(lvl: 4);
-      return Tween(begin: 500000, end: 2500000);
-    } else if (v > 2500000 && v <= 7500000) {
+      return Tween(begin: 60, end: 80);
+    } else if (v > 80 && v <= 100) {
       levelCubit.setLvl(lvl: 5);
-      return Tween(begin: 2500000, end: 7500000);
+      return Tween(begin: 80, end: 100);
     } else {
       levelCubit.setLvl(lvl: 6);
-      return Tween(begin: 7500000, end: 99999999);
+      return Tween(begin: 100, end: 99999999);
     }
   }
 
