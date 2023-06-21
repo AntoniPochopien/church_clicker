@@ -28,13 +28,12 @@ class _FakeSplashscreenState extends State<FakeSplashscreen> {
           BlocProvider.of<ChurchCubit>(context).setOwnedUpgradesFromDb(
             ownedUpgradesChurch: hiveState.ownedUpgradesChurchDb,
           );
-          Navigator.of(context).popAndPushNamed('/MainNavigationScreen');
+          Navigator.of(context).pushReplacementNamed('/MainNavigationScreen');
         }
       },
       child: const Scaffold(
-        body: Center(
-          child: Text('fake splash screen'),
-        ),
+        backgroundColor: Color(0xFF292241),
+        body: Center(),
       ),
     );
   }

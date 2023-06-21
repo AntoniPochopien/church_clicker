@@ -4,6 +4,7 @@ import 'package:church_clicker/services/google_ads_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import './cubit/navigation_cubit.dart';
 import '../../cubits/abilities_cubit/abilities_cubit.dart';
@@ -23,6 +24,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
+  final bool afterInit = false;
   final List<Widget> bodyContentList = [
     const PriestScreen(),
     const ChurchScreen(),
@@ -36,6 +38,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     super.initState();
     BlocProvider.of<HiveCubit>(context, listen: false).save();
     GoogleAdsService().createRewardedAd();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      FlutterNativeSplash.remove();
+    });
   }
 
   Widget buttonBuilder(

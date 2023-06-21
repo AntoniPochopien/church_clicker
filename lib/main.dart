@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import './cubits/hive_cubit/hive_cubit.dart';
 import './screens/main_navigation_screen/cubit/navigation_cubit.dart';
@@ -13,7 +14,8 @@ import './cubits/abilities_cubit/abilities_cubit.dart';
 import './models/upgrade_model.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Hive.initFlutter();
   MobileAds.instance.initialize();
   Hive.registerAdapter(UpgradeModelAdapter());

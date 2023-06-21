@@ -27,6 +27,8 @@ class ChurchScreen extends StatelessWidget {
               if (churchLvl != 0)
                 SvgPicture.asset(
                     'assets/images/svg/passive/passive_lvl_${churchLvl}.svg'),
+              if (churchLvl == 0)
+                SvgPicture.asset('assets/images/svg/passive/passive_lvl_1.svg'),
             ]);
           },
         );
