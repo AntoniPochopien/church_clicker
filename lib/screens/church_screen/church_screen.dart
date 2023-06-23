@@ -24,11 +24,8 @@ class ChurchScreen extends StatelessWidget {
                 'assets/images/svg/passive/passive_bg_1.svg',
                 fit: BoxFit.cover,
               ),
-              if (churchLvl != 0)
-                SvgPicture.asset(
-                    'assets/images/svg/passive/passive_lvl_${churchLvl}.svg'),
-              if (churchLvl == 0)
-                SvgPicture.asset('assets/images/svg/passive/passive_lvl_1.svg'),
+              SvgPicture.asset(
+                  'assets/images/svg/passive/passive_lvl_${churchLvl}.svg'),
             ]);
           },
         );

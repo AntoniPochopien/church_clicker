@@ -42,41 +42,49 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                 child: Center(
                   child: Stack(
                     children: [
-                      Column(
-                        children: [
-                          const Text(
-                            'Pomnóż swój majątek kręcąc kołem',
-                            style: TextStyle(fontSize: 28, color: Colors.amber),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                hiveState.avaliableSpins.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 55),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                        child: Column(
+                          children: [
+                            const FittedBox(
+                              child: Text(
+                                'Pomnóż swój majątek kręcąc kołem',
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    fontSize: 28, color: Colors.amber),
                               ),
-                              SizedBox(
-                                height: 45,
-                                width: 55,
-                                child: SvgPicture.asset(
-                                  'assets/images/svg/general/gold.svg',
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  hiveState.avaliableSpins.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 55),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Expanded(
-                            child: Padding(
-                                padding: const EdgeInsets.only(bottom: 45.0),
-                                child: Wheel(
-                                  rewardsList: rewardsList,
-                                  controller: controller,
-                                )),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                        ],
+                                SizedBox(
+                                  height: 45,
+                                  width: 55,
+                                  child: SvgPicture.asset(
+                                    'assets/images/svg/general/gold.svg',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 45.0),
+                                  child: Wheel(
+                                    rewardsList: rewardsList,
+                                    controller: controller,
+                                  )),
+                            ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                          ],
+                        ),
                       ),
                       Align(
                         alignment: Alignment.bottomCenter,

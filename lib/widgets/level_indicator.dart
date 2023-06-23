@@ -14,6 +14,15 @@ class LevelIndicator extends StatefulWidget {
 
 class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
+  final List<String> priestNames = [
+    'dziad xd',
+    'cos',
+    'Ministrant',
+    'Diakon',
+    'Kapłan',
+    'Arcybiskup',
+    'Papież'
+  ];
 
   Tween<double> lvlInterval(double v) {
     final levelCubit = BlocProvider.of<LevelCubit>(context, listen: false);
@@ -40,79 +49,96 @@ class _LevelIndicatorState extends State<LevelIndicator> {
 
   double _calculateLevelWidth({required double highestEarnings}) {
     final interval = lvlInterval(highestEarnings);
-    final x = (100 * highestEarnings) / interval.end!;
-    final y = (x * size.width) / 100;
+    final x =
+        (highestEarnings - interval.begin!) / (interval.end! - interval.begin!);
+    final y = x * size.width;
     return y;
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HiveCubit, HiveState>(
-      builder: (context, hiveState) {
-        return SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            height: 60,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
-              child: Stack(
+    return BlocBuilder<LevelCubit, LevelState>(
+      builder: (context, levelState) {
+        return BlocBuilder<HiveCubit, HiveState>(
+          builder: (context, hiveState) {
+            return SafeArea(
+              child: Column(
                 children: [
-                  Center(
+                  SizedBox(
+                    width: double.infinity,
+                    height: 60,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: MeasureSize(
-                        onChange: (s) => setState(() => size = s),
-                        child: Container(
-                          width: double.infinity,
-                          height: 20,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    child: SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: SvgPicture.asset(
-                        'assets/images/svg/general/bar_left.svg',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: SvgPicture.asset(
-                        'assets/images/svg/general/bar_right.svg',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: AnimatedContainer(
-                            height: 10,
-                            width: _calculateLevelWidth(
-                                highestEarnings: hiveState.allEarings),
-                            duration: const Duration(milliseconds: 300),
-                            color: Colors.amber,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 10),
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 18.0),
+                              child: MeasureSize(
+                                onChange: (s) => setState(() => size = s),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Positioned(
+                            left: 0,
+                            child: SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: SvgPicture.asset(
+                                'assets/images/svg/general/bar_left.svg',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 0,
+                            child: SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: SvgPicture.asset(
+                                'assets/images/svg/general/bar_right.svg',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 32.0),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: AnimatedContainer(
+                                    height: 10,
+                                    width: _calculateLevelWidth(
+                                        highestEarnings: hiveState.allEarings),
+                                    duration: const Duration(milliseconds: 300),
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
+                  ),
+                  Text(
+                    priestNames[levelState.lvl],
+                    style: const TextStyle(
+                        color: Colors.white, fontSize: 33, height: 0),
                   )
                 ],
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );

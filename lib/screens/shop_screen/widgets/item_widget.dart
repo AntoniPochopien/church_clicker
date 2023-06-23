@@ -47,7 +47,7 @@ class ItemWidget extends StatelessWidget {
                 ? Colors.amber
                 : isAvaliable
                     ? Colors.white
-                    : const Color(0xFFe2e2e6),
+                    : const Color(0xFFd2d2d9),
             child: Padding(
               padding: const EdgeInsets.all(0),
               child: Container(

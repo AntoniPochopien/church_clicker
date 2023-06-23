@@ -11,6 +11,7 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
   AbilitiesCubit()
       : super(
           AbilitiesState(
+            onTapPower: 0,
             earnedMoney: 0,
             ownedUpgradesPriest: [],
           ),
@@ -96,5 +97,6 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
       },
     );
     tapValue = x;
+    emit(state.copyWith(onTapPower: x));
   }
 }
