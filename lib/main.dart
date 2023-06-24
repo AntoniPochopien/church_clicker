@@ -1,6 +1,7 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
+import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -44,8 +45,9 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/FakeSplashscreen',
         routes: {
-          '/FakeSplashscreen': (context) => const FakeSplashscreen(),
-          '/MainNavigationScreen': (context) => const MainNavigationScreen()
+          FakeSplashscreen.route: (context) => const FakeSplashscreen(),
+          MainNavigationScreen.route: (context) => const MainNavigationScreen(),
+          LanguagesScreen.route: (context) => const LanguagesScreen(),
         },
       ),
     );

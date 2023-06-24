@@ -7,10 +7,17 @@ class LanguagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF292241),
-      body: Column(
-        children: [Text('Wybierz język')],
+    return const Scaffold(
+      backgroundColor:  Color(0xFF292241),
+      body: Center(
+        child: Padding(
+          padding:  EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text('Wybierz język'),
+            ],
+          ),
+        ),
       ),
     );
   }

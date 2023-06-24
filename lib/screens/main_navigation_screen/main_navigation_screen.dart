@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
+import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
 import 'package:church_clicker/services/google_ads_service.dart';
 
 import 'package:flutter/material.dart';
@@ -99,8 +100,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   style: const TextStyle(color: Colors.white, fontSize: 55),
                 ),
                 actions: [
-                  IconButton(
-                    onPressed: () {},
+                if(navState.currentIndex == 3 || navState.currentIndex == 2)  IconButton(
+                    onPressed: () => Navigator.of(context).pushNamed(LanguagesScreen.route),
                     icon: const Icon(
                       Icons.settings,
                       color: Color(0xFFE10032),
