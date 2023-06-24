@@ -16,7 +16,6 @@ class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
   final List<String> priestNames = [
     'dziad xd',
-    'cos',
     'Ministrant',
     'Diakon',
     'Kapłan',
@@ -131,7 +130,7 @@ class _LevelIndicatorState extends State<LevelIndicator> {
                     ),
                   ),
                   Text(
-                    priestNames[levelState.lvl],
+                    priestNames[levelState.lvl-1],
                     style: const TextStyle(
                         color: Colors.white, fontSize: 33, height: 0),
                   )

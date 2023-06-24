@@ -36,9 +36,7 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
       builder: (context, abilitiesState) {
         return BlocBuilder<HiveCubit, HiveState>(
           builder: (context, hiveState) {
-            return Container(
-              color: const Color(0xFF292241),
-              child: SafeArea(
+            return SafeArea(
                 child: Center(
                   child: Stack(
                     children: [
@@ -266,7 +264,7 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                     ],
                   ),
                 ),
-              ),
+         
             );
           },
         );

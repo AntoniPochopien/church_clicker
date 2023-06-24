@@ -89,6 +89,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             return Scaffold(
               extendBodyBehindAppBar: true,
               extendBody: true,
+              backgroundColor: const Color(0xFF292241),
               appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
@@ -97,6 +98,15 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   abilitiesState.earnedMoney.toInt().toString(),
                   style: const TextStyle(color: Colors.white, fontSize: 55),
                 ),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Color(0xFFE10032),
+                    ),
+                  ),
+                ],
               ),
               body: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 200),

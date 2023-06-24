@@ -4,7 +4,7 @@ part 'level_state.dart';
 class LevelCubit extends Cubit<LevelState> {
   LevelCubit()
       : super(LevelState(
-          lvl: 0,
+          lvl: 1,
         ));
 
   void setLvl({required int lvl}) {

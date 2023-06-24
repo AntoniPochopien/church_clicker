@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
+import 'package:church_clicker/models/animated_tap.dart';
 import 'package:church_clicker/widgets/level_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,15 +14,32 @@ class PriestScreen extends StatefulWidget {
   State<PriestScreen> createState() => _PriestScreenState();
 }
 
-class _PriestScreenState extends State<PriestScreen> {
-  List<Offset> onTapElements = [];
+class _PriestScreenState extends State<PriestScreen> with TickerProviderStateMixin {
+  List<AnimatedTap> tapObjects = [];
 
-  void _onTapDown(TapDownDetails details) {
+    void addObject(Offset position) {
+      final AnimationController controller = AnimationController(
+        duration: const Duration(milliseconds: 250),
+        vsync: this,
+      );
+
+      controller.forward().then((_) =>
+        controller.reverse().then((value) =>removeObjects(controller))
+      );
+
     setState(() {
-      onTapElements
-          .add(Offset(details.globalPosition.dx, details.globalPosition.dy));
+      tapObjects.add(AnimatedTap(position:  position,controller:  controller));
     });
   }
+
+
+  void removeObjects(AnimationController controller) {
+    setState(() {
+      tapObjects.removeWhere((object) => object.controller == controller);
+      controller.dispose();
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +49,7 @@ class _PriestScreenState extends State<PriestScreen> {
           builder: (context, abilitiesState) {
             return GestureDetector(
               onTapDown: (details) {
-                _onTapDown(details);
+                addObject(Offset(details.globalPosition.dx, details.globalPosition.dy));
                 BlocProvider.of<AbilitiesCubit>(context).tap();
               },
               child: Stack(
@@ -43,15 +61,20 @@ class _PriestScreenState extends State<PriestScreen> {
                   SvgPicture.asset(
                       'assets/images/svg/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.svg'),
                   const LevelIndicator(),
-                  ...onTapElements.map(
-                    (e) => Positioned(
-                      top: e.dy,
-                      left: e.dx,
-                      child: Text(
-                        abilitiesState.onTapPower.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
+                  ...tapObjects.map(
+                    (e) => AnimatedBuilder(
+              animation: e.controller,
+              builder: (BuildContext context, Widget? child) {
+                return Positioned(
+                  top: e.position.dy+(e.controller.value * 10),
+                  left: e.position.dx,
+                  child: Opacity(
+                    opacity: e.controller.value,
+                    child: Text('+ ${abilitiesState.onTapPower.toInt()}', style: const  TextStyle(color: Colors.amber, fontSize: 22),),
+                  ),
+                );
+              },
+            ),
                   )
                 ],
               ),
