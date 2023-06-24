@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../shop_screen/widgets/items_list.dart';
 
@@ -31,14 +32,14 @@ class _ShopScreenState extends State<ShopScreen> {
             child: PageView(
               onPageChanged: (v) => setState(() => _pageIndex = v),
               controller: _pageController,
-              children: const [
+              children:  [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 19.0),
-                  child: ItemsList(isChurch: false, title: 'Ulepsz Księdza'),
+                  padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                  child: ItemsList(isChurch: false, title: AppLocalizations.of(context)!.shop_upgrade_priest),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 19.0),
-                  child: ItemsList(isChurch: true, title: 'ulepsz kościół'),
+                  padding:const EdgeInsets.symmetric(horizontal: 19.0),
+                  child: ItemsList(isChurch: true, title: AppLocalizations.of(context)!.shop_upgrade_church),
                 ),
               ],
             ),
@@ -65,9 +66,9 @@ class _ShopScreenState extends State<ShopScreen> {
                             : const Color(0xFFA80022),
                       ),
                       onPressed: () => changeIndex(0),
-                      child: const Text(
-                        'Ksiądz',
-                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      child:  Text(
+                        AppLocalizations.of(context)!.shop_priest,
+                        style:const TextStyle(color: Colors.white, fontSize: 22),
                       ),
                     ),
                   ),
@@ -86,9 +87,9 @@ class _ShopScreenState extends State<ShopScreen> {
                             : const Color(0xFFA80022),
                       ),
                       onPressed: () => changeIndex(1),
-                      child: const Text(
-                        'Kościół',
-                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      child:  Text(
+                        AppLocalizations.of(context)!.shop_church,
+                        style:const TextStyle(color: Colors.white, fontSize: 22),
                       ),
                     ),
                   ),

@@ -45,12 +45,12 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 19.0),
                         child: Column(
                           children: [
-                            const FittedBox(
+                             FittedBox(
                               child: Text(
-                                'Pomnóż swój majątek kręcąc kołem',
+                                AppLocalizations.of(context)!.fortune_wheel_title,
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
-                                style: TextStyle(
+                                style:const TextStyle(
                                     fontSize: 28, color: Colors.amber),
                               ),
                             ),

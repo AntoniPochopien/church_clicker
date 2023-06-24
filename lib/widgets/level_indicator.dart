@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:measure_size/measure_size.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LevelIndicator extends StatefulWidget {
   const LevelIndicator({super.key});
@@ -14,14 +15,7 @@ class LevelIndicator extends StatefulWidget {
 
 class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
-  final List<String> priestNames = [
-    'dziad xd',
-    'Ministrant',
-    'Diakon',
-    'Kapłan',
-    'Arcybiskup',
-    'Papież'
-  ];
+
 
   Tween<double> lvlInterval(double v) {
     final levelCubit = BlocProvider.of<LevelCubit>(context, listen: false);
@@ -56,6 +50,14 @@ class _LevelIndicatorState extends State<LevelIndicator> {
 
   @override
   Widget build(BuildContext context) {
+      final List<String> priestNames = [
+    AppLocalizations.of(context)!.priest_lvl_1,
+    AppLocalizations.of(context)!.priest_lvl_2,
+    AppLocalizations.of(context)!.priest_lvl_3,
+    AppLocalizations.of(context)!.priest_lvl_4,
+    AppLocalizations.of(context)!.priest_lvl_5,
+    AppLocalizations.of(context)!.priest_lvl_6,
+  ];
     return BlocBuilder<LevelCubit, LevelState>(
       builder: (context, levelState) {
         return BlocBuilder<HiveCubit, HiveState>(
