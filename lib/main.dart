@@ -1,12 +1,15 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
+import 'package:church_clicker/l10n/l10n.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
 import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './cubits/hive_cubit/hive_cubit.dart';
 import './screens/main_navigation_screen/cubit/navigation_cubit.dart';
@@ -43,7 +46,14 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        initialRoute: '/FakeSplashscreen',
+        supportedLocales: L10n.all,
+          localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
+        initialRoute: FakeSplashscreen.route,
         routes: {
           FakeSplashscreen.route: (context) => const FakeSplashscreen(),
           MainNavigationScreen.route: (context) => const MainNavigationScreen(),
