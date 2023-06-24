@@ -6,6 +6,7 @@ import 'package:church_clicker/screens/fortune_wheel_screen/widgets/wheel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -234,10 +235,10 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                             child: FittedBox(
                                               child: Text(
                                                 hiveState.avaliableSpins == 0
-                                                    ? 'Obejrzyj reklamę aby zdobyć 1'
-                                                        .toUpperCase()
-                                                    : 'Zakręć kołem za 1'
-                                                        .toUpperCase(),
+                                                    ? AppLocalizations.of(context)!.fortune_wheel_button_watch_ad
+                                                        
+                                                    : AppLocalizations.of(context)!.fortune_wheel_spin
+                                                       ,
                                                 style: const TextStyle(
                                                     fontSize: 33,
                                                     color: Colors.white),

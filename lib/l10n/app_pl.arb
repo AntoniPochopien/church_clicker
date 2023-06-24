@@ -1,3 +1,17 @@
 {
-    "language":"język"
+    "language":"language",
+    "priest_lvl_1":"dziad xd",
+    "priest_lvl_2":"Ministrant",
+    "priest_lvl_3":"Diakon",
+    "priest_lvl_4":"Kapłan",
+    "priest_lvl_5":"Arcybiskup",
+    "priest_lvl_6":"Papież",
+    "fortune_wheel_title":"Pomnóż swój majątek kręcąc kołem",
+    "fortune_wheel_button_watch_ad":"Obejrzyj reklamę aby zdobyć",
+    "fortune_wheel_spin":"Zakręć kołem za",
+    "shop_church":"Kościół",
+    "shop_priest":"Ksiądz",
+    "shop_upgrade_priest":"Ulepsz Księdza",
+    "shop_upgrade_church":"Ulepsz Kościół",
+    "language_select_language":"Wybierz język"
 }

@@ -1,4 +1,5 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
+import 'package:church_clicker/cubits/language_cubit/language_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/l10n/l10n.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
@@ -35,29 +36,36 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LevelCubit()),
         BlocProvider(create: (context) => NavigationCubit()),
+        BlocProvider(create: (context) => LanguageCubit()),
         BlocProvider(create: (context) => HiveCubit()..start()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
         BlocProvider(create: (context) => ChurchCubit()..start(context)),
       ],
-      child: MaterialApp(
-        title: 'Church clicker',
-        theme: ThemeData(
-          fontFamily: 'PirataOne',
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        supportedLocales: L10n.all,
-          localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate
-        ],
-        initialRoute: FakeSplashscreen.route,
-        routes: {
-          FakeSplashscreen.route: (context) => const FakeSplashscreen(),
-          MainNavigationScreen.route: (context) => const MainNavigationScreen(),
-          LanguagesScreen.route: (context) => const LanguagesScreen(),
+      child: BlocBuilder<LanguageCubit, LanguageState>(
+        builder: (context, languageState) {
+          return MaterialApp(
+            title: 'Church clicker',
+            theme: ThemeData(
+              fontFamily: 'PirataOne',
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            locale: languageState.locale,
+            supportedLocales: L10n.all,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate
+            ],
+            initialRoute: FakeSplashscreen.route,
+            routes: {
+              FakeSplashscreen.route: (context) => const FakeSplashscreen(),
+              MainNavigationScreen.route: (context) =>
+                  const MainNavigationScreen(),
+              LanguagesScreen.route: (context) => const LanguagesScreen(),
+            },
+          );
         },
       ),
     );
