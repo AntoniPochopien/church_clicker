@@ -36,10 +36,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LevelCubit()),
         BlocProvider(create: (context) => NavigationCubit()),
-        BlocProvider(create: (context) => LanguageCubit()),
         BlocProvider(create: (context) => HiveCubit()..start()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
         BlocProvider(create: (context) => ChurchCubit()..start(context)),
+        BlocProvider(create: (context) => LanguageCubit()..start(context)),
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, languageState) {

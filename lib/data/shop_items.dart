@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../models/upgrade_model.dart';
 
 class ShopItems {
   static final List<UpgradeModel> priestItems = [
     UpgradeModel(
       id: 1,
-      name: 'Różaniec',
       updateValue: 1,
       priceMultiplier: 1.1,
       currentLvl: 0,
@@ -14,7 +16,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 2,
-      name: 'Modlitewnik',
       updateValue: 2,
       priceMultiplier: 1.1,
       currentLvl: 0,
@@ -24,7 +25,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 3,
-      name: 'Koloratka',
       updateValue: 3,
       priceMultiplier: 1.2,
       currentLvl: 0,
@@ -34,7 +34,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 4,
-      name: 'Kielich',
       updateValue: 4,
       priceMultiplier: 1.3,
       currentLvl: 0,
@@ -44,7 +43,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 5,
-      name: 'Stuła',
       updateValue: 5,
       priceMultiplier: 1.4,
       currentLvl: 0,
@@ -54,7 +52,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 6,
-      name: 'Krucyfiks',
       updateValue: 6,
       priceMultiplier: 1.5,
       currentLvl: 0,
@@ -64,7 +61,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 7,
-      name: 'Peleryna',
       updateValue: 7,
       priceMultiplier: 1.6,
       currentLvl: 0,
@@ -74,7 +70,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 8,
-      name: 'Biblia',
       updateValue: 8,
       priceMultiplier: 1.7,
       currentLvl: 0,
@@ -84,7 +79,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 9,
-      name: 'uj wi',
       updateValue: 9,
       priceMultiplier: 1.8,
       currentLvl: 0,
@@ -94,7 +88,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 10,
-      name: 'Papamobile',
       updateValue: 10,
       priceMultiplier: 1.9,
       currentLvl: 0,
@@ -107,7 +100,6 @@ class ShopItems {
   static final List<UpgradeModel> churchItems = [
     UpgradeModel(
       id: 11,
-      name: 'Kościół',
       currentLvl: 0,
       updateValue: 10,
       priceMultiplier: 10,
@@ -117,7 +109,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 12,
-      name: 'Taca na \$',
       currentLvl: 0,
       updateValue: 1,
       priceMultiplier: 2.2,
@@ -127,7 +118,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 13,
-      name: 'Świece',
       currentLvl: 0,
       updateValue: 2,
       priceMultiplier: 2.3,
@@ -137,7 +127,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 14,
-      name: 'Ławki',
       currentLvl: 0,
       updateValue: 3,
       priceMultiplier: 2.4,
@@ -147,7 +136,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 15,
-      name: 'Konfesjonał',
       currentLvl: 0,
       updateValue: 4,
       priceMultiplier: 2.5,
@@ -157,7 +145,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 16,
-      name: 'Dzwon',
       currentLvl: 0,
       updateValue: 5,
       priceMultiplier: 2.6,
@@ -167,7 +154,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 17,
-      name: 'Organy',
       currentLvl: 0,
       updateValue: 6,
       priceMultiplier: 2.7,
@@ -177,7 +163,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 18,
-      name: 'Ołtarz',
       currentLvl: 0,
       updateValue: 7,
       priceMultiplier: 2.8,
@@ -187,7 +172,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 19,
-      name: 'Krzyż',
       currentLvl: 0,
       updateValue: 8,
       priceMultiplier: 2.9,
@@ -197,7 +181,6 @@ class ShopItems {
     ),
     UpgradeModel(
       id: 20,
-      name: 'Cmentarz',
       currentLvl: 0,
       updateValue: 9,
       priceMultiplier: 3.0,
@@ -206,4 +189,28 @@ class ShopItems {
       imgPath: 'assets/images/svg/shop_passive/passive_item_10.svg',
     ),
   ];
+
+  //translations of item names
+  static Map<int, String> itemNames(BuildContext context) => {
+        1: AppLocalizations.of(context)!.priest_item_1,
+        2: AppLocalizations.of(context)!.priest_item_2,
+        3: AppLocalizations.of(context)!.priest_item_3,
+        4: AppLocalizations.of(context)!.priest_item_4,
+        5: AppLocalizations.of(context)!.priest_item_5,
+        6: AppLocalizations.of(context)!.priest_item_6,
+        7: AppLocalizations.of(context)!.priest_item_7,
+        8: AppLocalizations.of(context)!.priest_item_8,
+        9: AppLocalizations.of(context)!.priest_item_9,
+        10: AppLocalizations.of(context)!.priest_item_10,
+        11: AppLocalizations.of(context)!.church_item_1,
+        12: AppLocalizations.of(context)!.church_item_2,
+        13: AppLocalizations.of(context)!.church_item_3,
+        14: AppLocalizations.of(context)!.church_item_4,
+        15: AppLocalizations.of(context)!.church_item_5,
+        16: AppLocalizations.of(context)!.church_item_6,
+        17: AppLocalizations.of(context)!.church_item_7,
+        18: AppLocalizations.of(context)!.church_item_8,
+        19: AppLocalizations.of(context)!.church_item_9,
+        20: AppLocalizations.of(context)!.church_item_10,
+      };
 }

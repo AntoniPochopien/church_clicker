@@ -9,6 +9,7 @@ class HiveCubit extends Cubit<HiveState> {
   HiveCubit()
       : super(
           HiveState(
+            locale: null,
             avaliableSpins: 0,
             isLoaded: false,
             allEarings: 0,
@@ -24,6 +25,7 @@ class HiveCubit extends Cubit<HiveState> {
     box = await Hive.openBox('MyBox');
     emit(
       state.copyWith(
+        locale: box.get('locale'),
         avaliableSpins: box.get('avaliableSpins') ?? 0,
         allEarings: box.get('allEarings') ?? 0,
         earnedMoney: box.get('earnedMoney') ?? 0,
@@ -39,12 +41,14 @@ class HiveCubit extends Cubit<HiveState> {
   }
 
   void save({
+    String? locale,
     double? earnedMoney,
     double? allEarings,
     int? avaliableSpins,
     List<UpgradeModel>? ownedUpgrades,
     List<UpgradeModel>? ownedUpgradesChurchDb,
   }) {
+    box.put('locale', locale ?? state.locale);
     box.put('avaliableSpins', avaliableSpins ?? state.avaliableSpins);
     box.put('earnedMoney', earnedMoney ?? state.earnedMoney);
     box.put(

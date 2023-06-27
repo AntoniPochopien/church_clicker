@@ -7,24 +7,21 @@ class UpgradeModel {
   @HiveField(0)
   int id;
   @HiveField(1)
-  String name;
-  @HiveField(2)
   int price;
-  @HiveField(3)
+  @HiveField(2)
   int maxLvl;
-  @HiveField(4)
+  @HiveField(3)
   int currentLvl;
-  @HiveField(5)
+  @HiveField(4)
   int updateValue;
-  @HiveField(6)
+  @HiveField(5)
   String imgPath;
-  @HiveField(7)
+  @HiveField(6)
   double priceMultiplier;
 
   UpgradeModel({
     required this.imgPath,
     required this.id,
-    required this.name,
     required this.currentLvl,
     required this.updateValue,
     required this.price,

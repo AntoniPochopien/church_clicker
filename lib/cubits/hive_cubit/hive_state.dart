@@ -5,9 +5,11 @@ class HiveState {
   double earnedMoney;
   double allEarings;
   int avaliableSpins;
+  String? locale;
   List<UpgradeModel> ownedUpgradesPriestDb;
   List<UpgradeModel> ownedUpgradesChurchDb;
   HiveState({
+    required this.locale,
     required this.avaliableSpins,
     required this.isLoaded,
     required this.allEarings,
@@ -17,6 +19,7 @@ class HiveState {
   });
 
   HiveState copyWith({
+    String? locale,
     bool? isLoaded,
     double? earnedMoney,
     List<UpgradeModel>? ownedUpgradesPriestDb,
@@ -25,6 +28,7 @@ class HiveState {
     int? avaliableSpins,
   }) {
     return HiveState(
+      locale: locale ?? this.locale,
       avaliableSpins: avaliableSpins ?? this.avaliableSpins,
       isLoaded: isLoaded ?? this.isLoaded,
       allEarings: allEarings ?? this.allEarings,

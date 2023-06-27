@@ -27,7 +27,6 @@ class ItemsList extends StatelessWidget {
               maxLvl: 0,
               price: 0,
               updateValue: 0,
-              name: '',
               imgPath: '',
             ),
           )
@@ -80,7 +79,7 @@ class ItemsList extends StatelessWidget {
                                         .buyUpgrade,
                                 id: item.id,
                                 maxLvl: item.maxLvl,
-                                name: item.name,
+                                name: ShopItems.itemNames(context)[item.id]!,
                                 ownedLvl: ownedLvl,
                                 price:
                                     ownedLvl != 0 ? price.toInt() : item.price,
