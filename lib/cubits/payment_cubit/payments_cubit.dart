@@ -23,6 +23,7 @@ class PaymentsCubit extends Cubit<PaymentsState> {
 
   void start(BuildContext context) {
     hiveCubit = context.read<HiveCubit>();
+    startPurchases();
   }
 
   void startPurchases() async {
@@ -50,12 +51,11 @@ class PaymentsCubit extends Cubit<PaymentsState> {
   }
 
   Future<void> getProducts() async {
-    // Set<String> ids = {
-    //   'pl.netigen.newmetaldetector.noads',
-    //   'pl.netigen.newmetaldetector.noadspromotion'
-    // };
-    // ProductDetailsResponse response = await iap.queryProductDetails(ids);
-    // emit(state.copyWith(products: response.productDetails));
+    Set<String> ids = {
+      'pl.rocketcode.10spins',
+    };
+    ProductDetailsResponse response = await iap.queryProductDetails(ids);
+    emit(state.copyWith(products: response.productDetails));
   }
 
   void buyProduct() async {
@@ -63,8 +63,8 @@ class PaymentsCubit extends Cubit<PaymentsState> {
     emit(state.copyWith(avaliable: avaliable));
     if (state.avaliable) {
       final PurchaseParam purchaseParam = PurchaseParam(
-        productDetails: state.products.firstWhere((element) =>
-            element.id == 'pl.netigen.newmetaldetector.noadspromotion'),
+        productDetails: state.products
+            .firstWhere((element) => element.id == 'pl.rocketcode.10spins'),
       );
       await InAppPurchase.instance
           .buyConsumable(purchaseParam: purchaseParam, autoConsume: true);
