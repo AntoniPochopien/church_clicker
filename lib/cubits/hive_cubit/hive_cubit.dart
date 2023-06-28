@@ -17,11 +17,13 @@ class HiveCubit extends Cubit<HiveState> {
             ownedUpgradesPriestDb: [],
             ownedUpgradesChurchDb: [],
           ),
-        );
+        ) {
+    init();
+  }
 
   late Box box;
 
-  void start() async {
+  void init() async {
     box = await Hive.openBox('MyBox');
     emit(
       state.copyWith(

@@ -1,6 +1,7 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/language_cubit/language_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
+import 'package:church_clicker/cubits/payment_cubit/payments_cubit.dart';
 import 'package:church_clicker/l10n/l10n.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
 import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
@@ -36,10 +37,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LevelCubit()),
         BlocProvider(create: (context) => NavigationCubit()),
-        BlocProvider(create: (context) => HiveCubit()..start()),
+        BlocProvider(create: (context) => HiveCubit()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
         BlocProvider(create: (context) => ChurchCubit()..start(context)),
         BlocProvider(create: (context) => LanguageCubit()..start(context)),
+        BlocProvider(create: (context) => PaymentsCubit()..start(context))
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, languageState) {

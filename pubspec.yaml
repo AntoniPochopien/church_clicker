@@ -47,6 +47,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
+  in_app_purchase: ^3.1.7
 
 dev_dependencies:
   build_runner: ^2.4.4
