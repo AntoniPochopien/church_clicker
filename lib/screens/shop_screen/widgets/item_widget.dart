@@ -1,3 +1,4 @@
+import 'package:church_clicker/extensions/int_extension.dart';
 import 'package:church_clicker/widgets/pentagon_custom_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -91,10 +92,15 @@ class ItemWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             if (!(maxLvl <= ownedLvl))
-                              Text(
-                                price.toString(),
-                                style: const TextStyle(
-                                    fontSize: 24, color: Color(0xFFA80022)),
+                              Flexible(
+                                child: FittedBox(
+                                  child: Text(
+                                    price.toShortenedString(),
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                        fontSize: 24, color: Color(0xFFA80022)),
+                                  ),
+                                ),
                               ),
                             Text(
                               isPriestUpgrade
