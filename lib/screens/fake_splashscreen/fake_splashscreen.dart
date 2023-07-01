@@ -26,21 +26,17 @@ class _FakeSplashscreenState extends State<FakeSplashscreen> {
       listener: (context, hiveState) {
         if (isRouted == false && hiveState.isLoaded) {
           isRouted = true;
-          print('to te locale ${hiveState.locale}');
           if (hiveState.locale != null) {
             BlocProvider.of<LanguageCubit>(context)
                 .setLocale(locale: Locale(hiveState.locale!));
-            print('gowno 1');
           } else if (L10n.all.contains(
             Locale(Platform.localeName.substring(0, 2)),
           )) {
             BlocProvider.of<LanguageCubit>(context)
                 .setLocale(locale: Locale(Platform.localeName.substring(0, 2)));
-            print('gowno 2');
           } else {
             BlocProvider.of<LanguageCubit>(context)
                 .setLocale(locale: const Locale('en'));
-            print('gowno 3');
           }
           BlocProvider.of<AbilitiesCubit>(context).setFromDb(
               earnedMoneyDb: hiveState.earnedMoney,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:church_clicker/cubits/abilities_cubit/abilities_cubit.dart';
+import 'package:church_clicker/screens/fortune_wheel_screen/widgets/purchase_button.dart';
 import 'package:church_clicker/screens/fortune_wheel_screen/widgets/wheel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
@@ -33,239 +34,189 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AbilitiesCubit, AbilitiesState>(
-      builder: (context, abilitiesState) {
-        return BlocBuilder<HiveCubit, HiveState>(
-          builder: (context, hiveState) {
-            return SafeArea(
-              child: Center(
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 19.0),
-                      child: Column(
-                        children: [
-                          FittedBox(
-                            child: Text(
-                              AppLocalizations.of(context)!.fortune_wheel_title,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: const TextStyle(
-                                  fontSize: 28, color: Colors.amber),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+    return BlocBuilder<PaymentsCubit, PaymentsState>(
+      builder: (context, paymentsState) {
+        return BlocBuilder<AbilitiesCubit, AbilitiesState>(
+          builder: (context, abilitiesState) {
+            return BlocBuilder<HiveCubit, HiveState>(
+              builder: (context, hiveState) {
+                return SafeArea(
+                  child: Center(
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                          child: Column(
                             children: [
-                              Text(
-                                hiveState.avaliableSpins.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 55),
-                              ),
-                              SizedBox(
-                                height: 45,
-                                width: 55,
-                                child: SvgPicture.asset(
-                                  'assets/images/svg/general/gold.svg',
+                              FittedBox(
+                                child: Text(
+                                  AppLocalizations.of(context)!
+                                      .fortune_wheel_title,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  style: const TextStyle(
+                                      fontSize: 28, color: Colors.amber),
                                 ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    hiveState.avaliableSpins.toString(),
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 55),
+                                  ),
+                                  SizedBox(
+                                    height: 45,
+                                    width: 55,
+                                    child: SvgPicture.asset(
+                                      'assets/images/svg/general/gold.svg',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Expanded(
+                                child: Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 45.0),
+                                    child: Wheel(
+                                      rewardsList: rewardsList,
+                                      controller: controller,
+                                    )),
+                              ),
+                              const SizedBox(
+                                height: 50,
                               ),
                             ],
                           ),
-                          Expanded(
-                            child: Padding(
-                                padding: const EdgeInsets.only(bottom: 45.0),
-                                child: Wheel(
-                                  rewardsList: rewardsList,
-                                  controller: controller,
-                                )),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 19.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    shape: BeveledRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    BlocProvider.of<PaymentsCubit>(context)
-                                        .buyProduct();
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Text(
-                                            '10',
-                                            style: TextStyle(
-                                                color: Color(0xFFE10032),
-                                                fontSize: 30),
-                                          ),
-                                          SizedBox(
-                                            height: 22,
-                                            width: 28,
-                                            child: SvgPicture.asset(
-                                              'assets/images/svg/general/gold.svg',
-                                            ),
-                                          ),
-                                        ],
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 19.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    if (paymentsState.products.isNotEmpty)
+                                      PurchaseButton(
+                                          spinsAmount: 10,
+                                          productDetails:
+                                              paymentsState.products[0],
+                                          productId:
+                                              paymentsState.products[0].id),
+                                    SizedBox(
+                                      width: 50,
+                                      height: 100,
+                                      child: SvgPicture.asset(
+                                        'assets/images/svg/general/wheel_indicator.svg',
                                       ),
-                                      const Text(
-                                        '9,99 zł',
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 22),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 50,
-                                  height: 100,
-                                  child: SvgPicture.asset(
-                                    'assets/images/svg/general/wheel_indicator.svg',
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    shape: BeveledRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                  ),
-                                  onPressed: () {},
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Text(
-                                            '3',
-                                            style: TextStyle(
-                                                color: Color(0xFFE10032),
-                                                fontSize: 30),
-                                          ),
-                                          SizedBox(
-                                            height: 22,
-                                            width: 28,
-                                            child: SvgPicture.asset(
-                                              'assets/images/svg/general/gold.svg',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const Text(
-                                        '4,99 zł',
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 22),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SafeArea(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 19),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFFE10032),
-                                  shape: BeveledRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                onPressed: () async {
-                                  if (isSpining) return;
-                                  if (hiveState.avaliableSpins > 0) {
-                                    int randomPosition = 0;
-                                    isSpining = true;
-                                    setState(
-                                      () {
-                                        BlocProvider.of<HiveCubit>(context)
-                                            .deleteSpin();
-                                        randomPosition = Random().nextInt(6);
-                                        controller.add(randomPosition);
-                                      },
-                                    );
-                                    await Future.delayed(
-                                        const Duration(seconds: 5), () {
-                                      BlocProvider.of<AbilitiesCubit>(context)
-                                          .addFortuneWheelReward(
-                                              v: abilitiesState.earnedMoney *
-                                                  rewardsList[randomPosition]);
-                                    });
-                                    isSpining = false;
-                                  } else {
-                                    GoogleAdsService().showRewardedAd(
-                                        onEarnRewardCallback: () {
-                                      BlocProvider.of<HiveCubit>(context)
-                                          .addSpin(amount: 1);
-                                    });
-                                  }
-                                },
-                                child: ConstrainedBox(
-                                  constraints:
-                                      const BoxConstraints(minHeight: 50),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Flexible(
-                                          child: FittedBox(
-                                            child: Text(
-                                              hiveState.avaliableSpins == 0
-                                                  ? AppLocalizations.of(
-                                                          context)!
-                                                      .fortune_wheel_button_watch_ad
-                                                  : AppLocalizations.of(
-                                                          context)!
-                                                      .fortune_wheel_spin,
-                                              style: const TextStyle(
-                                                  fontSize: 33,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 33,
-                                          width: 40,
-                                          child: SvgPicture.asset(
-                                            'assets/images/svg/general/gold.svg',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                    if (paymentsState.products.length > 1)
+                                      PurchaseButton(
+                                          spinsAmount: 3,
+                                          productDetails:
+                                              paymentsState.products[1],
+                                          productId:
+                                              paymentsState.products[1].id),
+                                  ],
                                 ),
                               ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                              SafeArea(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 19),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xFFE10032),
+                                      shape: BeveledRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                    onPressed: () async {
+                                      if (isSpining) return;
+                                      if (hiveState.avaliableSpins > 0) {
+                                        int randomPosition = 0;
+                                        isSpining = true;
+                                        setState(
+                                          () {
+                                            BlocProvider.of<HiveCubit>(context)
+                                                .deleteSpin();
+                                            randomPosition =
+                                                Random().nextInt(6);
+                                            controller.add(randomPosition);
+                                          },
+                                        );
+                                        await Future.delayed(
+                                            const Duration(seconds: 5), () {
+                                          BlocProvider.of<AbilitiesCubit>(
+                                                  context)
+                                              .addFortuneWheelReward(
+                                                  v: abilitiesState
+                                                          .earnedMoney *
+                                                      rewardsList[
+                                                          randomPosition]);
+                                        });
+                                        isSpining = false;
+                                      } else {
+                                        GoogleAdsService().showRewardedAd(
+                                            onEarnRewardCallback: () {
+                                          BlocProvider.of<HiveCubit>(context)
+                                              .addSpin(amount: 1);
+                                        });
+                                      }
+                                    },
+                                    child: ConstrainedBox(
+                                      constraints:
+                                          const BoxConstraints(minHeight: 50),
+                                      child: SizedBox(
+                                        width: double.infinity,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Flexible(
+                                              child: FittedBox(
+                                                child: Text(
+                                                  hiveState.avaliableSpins == 0
+                                                      ? AppLocalizations.of(
+                                                              context)!
+                                                          .fortune_wheel_button_watch_ad
+                                                      : AppLocalizations.of(
+                                                              context)!
+                                                          .fortune_wheel_spin,
+                                                  style: const TextStyle(
+                                                      fontSize: 33,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 33,
+                                              width: 40,
+                                              child: SvgPicture.asset(
+                                                'assets/images/svg/general/gold.svg',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
             );
           },
         );

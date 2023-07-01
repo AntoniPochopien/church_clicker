@@ -53,18 +53,19 @@ class PaymentsCubit extends Cubit<PaymentsState> {
   Future<void> getProducts() async {
     Set<String> ids = {
       'pl.rocketcode.10spins',
+      'pl.rocketcode.3spins',
     };
     ProductDetailsResponse response = await iap.queryProductDetails(ids);
     emit(state.copyWith(products: response.productDetails));
   }
 
-  void buyProduct() async {
+  void buyProduct({required String productId}) async {
     final avaliable = await iap.isAvailable();
     emit(state.copyWith(avaliable: avaliable));
     if (state.avaliable) {
       final PurchaseParam purchaseParam = PurchaseParam(
-        productDetails: state.products
-            .firstWhere((element) => element.id == 'pl.rocketcode.10spins'),
+        productDetails:
+            state.products.firstWhere((element) => element.id == productId),
       );
       await InAppPurchase.instance
           .buyConsumable(purchaseParam: purchaseParam, autoConsume: true);
@@ -76,11 +77,18 @@ class PaymentsCubit extends Cubit<PaymentsState> {
       (element) {
         print('produkt: ${element.productID}');
         if (element.status == PurchaseStatus.pending) {
-          print('produkt pending: ${element.productID}');
+          emit(
+            state.copyWith(pending: true),
+          );
           //handle situation when user pressed button to start purchase, (on iOS it takes more time, android have almost immediately response) maybe show some loading spinners
         } else if (element.status == PurchaseStatus.error) {
+          emit(
+            state.copyWith(pending: false),
+          );
         } else if (element.status == PurchaseStatus.canceled) {
-          print('produkt canceled: ${element.productID}');
+          emit(
+            state.copyWith(pending: false),
+          );
           //handle situation when user canceled payment
         } else if (element.status == PurchaseStatus.purchased ||
             element.status == PurchaseStatus.restored) {
@@ -89,8 +97,16 @@ class PaymentsCubit extends Cubit<PaymentsState> {
           //NOT TO DO: _purchases = [elements];
           //DO: _purchases.add(element);
           state.purchases.add(element);
-          print('GIVING PRODUCT TO USER');
+          if (element.productID == 'pl.rocketcode.10spins') {
+            hiveCubit.addSpin(amount: 10);
+          }
+          if (element.productID == 'pl.rocketcode.3spins') {
+            hiveCubit.addSpin(amount: 3);
+          }
           iap.completePurchase(element);
+          emit(
+            state.copyWith(pending: false),
+          );
         }
       },
     );
