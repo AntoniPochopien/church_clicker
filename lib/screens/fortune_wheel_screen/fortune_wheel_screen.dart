@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:church_clicker/cubits/abilities_cubit/abilities_cubit.dart';
 import 'package:church_clicker/screens/fortune_wheel_screen/widgets/purchase_button.dart';
 import 'package:church_clicker/screens/fortune_wheel_screen/widgets/wheel.dart';
+import 'package:church_clicker/screens/fortune_wheel_screen/widgets/win_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 import 'package:flutter/material.dart';
@@ -153,6 +154,15 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                         );
                                         await Future.delayed(
                                             const Duration(seconds: 5), () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => WinDialog(
+                                              v: abilitiesState.earnedMoney *
+                                                      rewardsList[
+                                                          randomPosition] -
+                                                  abilitiesState.earnedMoney,
+                                            ),
+                                          );
                                           BlocProvider.of<AbilitiesCubit>(
                                                   context)
                                               .addFortuneWheelReward(
