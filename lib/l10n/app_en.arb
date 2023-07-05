@@ -31,6 +31,8 @@
 "church_item_6": "Bell",
 "church_item_7": "Organ",
 "church_item_8": "Altar",
-"church_item_9": "Cross",
-"church_item_10": "Cemetery"
+"church_item_9": "Crucifix",
+"church_item_10": "Cemetery",
+"popup_title": "When you went to rest, the faithful gave you:",
+"popup_button": "Multiply your profit!"
 }

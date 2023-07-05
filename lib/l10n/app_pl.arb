@@ -21,7 +21,7 @@
     "priest_item_6":"Krucyfiks",
     "priest_item_7":"Peleryna",
     "priest_item_8":"Biblia",
-    "priest_item_9":"uj wi",
+    "priest_item_9":"Biały gołąb",
     "priest_item_10":"Papamobile",
     "church_item_1":"Kościół",
     "church_item_2":"Taca na $",
@@ -32,5 +32,7 @@
     "church_item_7":"Organy",
     "church_item_8":"Ołtarz",
     "church_item_9":"Krzyż",
-    "church_item_10":"Cmentarz"
+    "church_item_10":"Cmentarz",
+    "popup_title": "Kiedy udałeś się na spoczynek wierni przekazali Ci:",
+    "popup_button": "Pomnóż zysk!"
 }
