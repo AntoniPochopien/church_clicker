@@ -16,27 +16,26 @@ class LevelIndicator extends StatefulWidget {
 class _LevelIndicatorState extends State<LevelIndicator> {
   Size size = const Size(20, 20);
 
-
   Tween<double> lvlInterval(double v) {
     final levelCubit = BlocProvider.of<LevelCubit>(context, listen: false);
-    if (v >= 0 && v <= 20) {
+    if (v >= 0 && v < 100) {
       levelCubit.setLvl(lvl: 1);
-      return Tween(begin: 0, end: 20);
-    } else if (v > 20 && v <= 40) {
+      return Tween(begin: 0, end: 100);
+    } else if (v >= 100 && v < 10000) {
       levelCubit.setLvl(lvl: 2);
-      return Tween(begin: 20, end: 40);
-    } else if (v > 40 && v <= 60) {
+      return Tween(begin: 100, end: 10000);
+    } else if (v >= 10000 && v < 100000) {
       levelCubit.setLvl(lvl: 3);
-      return Tween(begin: 40, end: 60);
-    } else if (v > 60 && v <= 80) {
+      return Tween(begin: 10000, end: 100000);
+    } else if (v >= 100000 && v < 1000000) {
       levelCubit.setLvl(lvl: 4);
-      return Tween(begin: 60, end: 80);
-    } else if (v > 80 && v <= 100) {
+      return Tween(begin: 100000, end: 1000000);
+    } else if (v >= 1000000 && v < 10000000) {
       levelCubit.setLvl(lvl: 5);
-      return Tween(begin: 80, end: 100);
+      return Tween(begin: 1000000, end: 10000000);
     } else {
       levelCubit.setLvl(lvl: 6);
-      return Tween(begin: 100, end: 99999999);
+      return Tween(begin: 10000000, end: double.infinity);
     }
   }
 
@@ -50,14 +49,14 @@ class _LevelIndicatorState extends State<LevelIndicator> {
 
   @override
   Widget build(BuildContext context) {
-      final List<String> priestNames = [
-    AppLocalizations.of(context)!.priest_lvl_1,
-    AppLocalizations.of(context)!.priest_lvl_2,
-    AppLocalizations.of(context)!.priest_lvl_3,
-    AppLocalizations.of(context)!.priest_lvl_4,
-    AppLocalizations.of(context)!.priest_lvl_5,
-    AppLocalizations.of(context)!.priest_lvl_6,
-  ];
+    final List<String> priestNames = [
+      AppLocalizations.of(context)!.priest_lvl_1,
+      AppLocalizations.of(context)!.priest_lvl_2,
+      AppLocalizations.of(context)!.priest_lvl_3,
+      AppLocalizations.of(context)!.priest_lvl_4,
+      AppLocalizations.of(context)!.priest_lvl_5,
+      AppLocalizations.of(context)!.priest_lvl_6,
+    ];
     return BlocBuilder<LevelCubit, LevelState>(
       builder: (context, levelState) {
         return BlocBuilder<HiveCubit, HiveState>(
@@ -132,7 +131,7 @@ class _LevelIndicatorState extends State<LevelIndicator> {
                     ),
                   ),
                   Text(
-                    priestNames[levelState.lvl-1],
+                    priestNames[levelState.lvl - 1],
                     style: const TextStyle(
                         color: Colors.white, fontSize: 33, height: 0),
                   )
