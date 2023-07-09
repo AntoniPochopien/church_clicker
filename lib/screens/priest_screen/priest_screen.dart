@@ -4,7 +4,7 @@ import 'package:church_clicker/models/animated_tap.dart';
 import 'package:church_clicker/widgets/level_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rive/rive.dart';
 
 import '../../cubits/abilities_cubit/abilities_cubit.dart';
 
@@ -54,12 +54,13 @@ class _PriestScreenState extends State<PriestScreen>
               },
               child: Stack(
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/svg/active/active_bg_1.svg',
-                    fit: BoxFit.cover,
+                  const RiveAnimation.asset(
+                    'assets/rive/active/active_bg_1.riv',
+                    fit: BoxFit.fill,
                   ),
-                  SvgPicture.asset(
-                      'assets/images/svg/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.svg'),
+                  RiveAnimation.asset(
+                    'assets/rive/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.riv',
+                  ),
                   const LevelIndicator(),
                   ...tapObjects.map(
                     (e) => AnimatedBuilder(

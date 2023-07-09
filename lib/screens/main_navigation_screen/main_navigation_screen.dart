@@ -36,7 +36,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     BlocProvider.of<HiveCubit>(context, listen: false).save();
     GoogleAdsService().createRewardedAd();

@@ -45,9 +45,13 @@ class _WinDialogState extends State<WinDialog>
         child: Dialog(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          child: Text(
-            '+ ${widget.v.toInt().toShortenedString()}',
-            style: const TextStyle(color: Colors.amber, fontSize: 64),
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              '+ ${widget.v.toInt().toShortenedString()} ',
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.amber, fontSize: 64),
+            ),
           ),
         ),
       ),

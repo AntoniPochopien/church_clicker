@@ -49,6 +49,7 @@ dependencies:
   intl: ^0.18.0
   in_app_purchase: ^3.1.7
   confetti: ^0.7.0
+  rive: ^0.11.4
 
 dev_dependencies:
   build_runner: ^2.4.4
@@ -93,13 +94,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/svg/passive/
     - assets/images/svg/menu/
-    - assets/images/svg/active/
     - assets/images/svg/shop_passive/
     - assets/images/svg/shop_active/
     - assets/images/svg/general/
     - assets/images/png/
+    - assets/rive/active/
+    - assets/rive/passive/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
