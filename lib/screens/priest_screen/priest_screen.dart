@@ -67,7 +67,7 @@ class _PriestScreenState extends State<PriestScreen>
                       animation: e.controller,
                       builder: (BuildContext context, Widget? child) {
                         return Positioned(
-                          top: e.position.dy + (e.controller.value * 10),
+                          top: e.position.dy + (e.controller.value * -40),
                           left: e.position.dx,
                           child: Opacity(
                             opacity: e.controller.value,
