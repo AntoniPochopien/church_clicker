@@ -5,10 +5,12 @@ class HiveState {
   double earnedMoney;
   double allEarings;
   int avaliableSpins;
+  int lastPlayedTime;
   String? locale;
   List<UpgradeModel> ownedUpgradesPriestDb;
   List<UpgradeModel> ownedUpgradesChurchDb;
   HiveState({
+    required this.lastPlayedTime,
     required this.locale,
     required this.avaliableSpins,
     required this.isLoaded,
@@ -19,6 +21,7 @@ class HiveState {
   });
 
   HiveState copyWith({
+    int? lastPlayedTime,
     String? locale,
     bool? isLoaded,
     double? earnedMoney,
@@ -28,6 +31,7 @@ class HiveState {
     int? avaliableSpins,
   }) {
     return HiveState(
+      lastPlayedTime: lastPlayedTime ?? this.lastPlayedTime,
       locale: locale ?? this.locale,
       avaliableSpins: avaliableSpins ?? this.avaliableSpins,
       isLoaded: isLoaded ?? this.isLoaded,

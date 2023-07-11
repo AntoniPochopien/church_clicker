@@ -1,4 +1,4 @@
-import 'package:church_clicker/consts/ads_id.dart';
+import 'package:church_clicker/consts/ad_id.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class GoogleAdsService {

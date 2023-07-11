@@ -63,28 +63,23 @@ class ItemsList extends StatelessWidget {
                           final price = item.price *
                               math.pow(item.priceMultiplier, ownedLvl);
 
-                          return BlocBuilder<AbilitiesCubit, AbilitiesState>(
-                            builder: (context, abilitiesState) {
-                              return ItemWidget(
-                                upgradeValue: item.updateValue,
-                                imgPath: item.imgPath,
-                                isAvaliable: abilitiesState.earnedMoney >=
-                                        (price != 0 ? price : item.price) &&
-                                    item.maxLvl > ownedLvl,
-                                isPriestUpgrade: !isChurch,
-                                onTap: isChurch
-                                    ? BlocProvider.of<ChurchCubit>(context)
-                                        .buyUpgrade
-                                    : BlocProvider.of<AbilitiesCubit>(context)
-                                        .buyUpgrade,
-                                id: item.id,
-                                maxLvl: item.maxLvl,
-                                name: ShopItems.itemNames(context)[item.id]!,
-                                ownedLvl: ownedLvl,
-                                price:
-                                    ownedLvl != 0 ? price.toInt() : item.price,
-                              );
-                            },
+                          return ItemWidget(
+                            upgradeValue: item.updateValue,
+                            imgPath: item.imgPath,
+                            isAvaliable: abilitiesState.earnedMoney >=
+                                    (price != 0 ? price : item.price) &&
+                                item.maxLvl > ownedLvl,
+                            isPriestUpgrade: !isChurch,
+                            onTap: isChurch
+                                ? BlocProvider.of<ChurchCubit>(context)
+                                    .buyUpgrade
+                                : BlocProvider.of<AbilitiesCubit>(context)
+                                    .buyUpgrade,
+                            id: item.id,
+                            maxLvl: item.maxLvl,
+                            name: ShopItems.itemNames(context)[item.id]!,
+                            ownedLvl: ownedLvl,
+                            price: ownedLvl != 0 ? price.toInt() : item.price,
                           );
                         }),
                   ),
