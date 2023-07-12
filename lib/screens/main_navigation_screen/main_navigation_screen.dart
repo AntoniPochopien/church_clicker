@@ -135,14 +135,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   builder: (context, hiveState) {
                     if (!afterDialogInit) {
                       afterDialogInit = true;
-                      if (DateTime.now().millisecondsSinceEpoch -
-                              hiveState.lastPlayedTime >
-                          600000) {
+                      final lastPlayedCalulated =
+                          DateTime.now().millisecondsSinceEpoch -
+                              hiveState.lastPlayedTime;
+                      if (lastPlayedCalulated > 600000 &&
+                          churchState.churchEarnings > 0) {
                         _showInitDialog(
                           context,
-                          lastPlayedTime: hiveState.lastPlayedTime > 86400000
+                          lastPlayedTime: lastPlayedCalulated > 86400000
                               ? 86400000
-                              : hiveState.lastPlayedTime,
+                              : lastPlayedCalulated,
                           churchEarings: churchState.churchEarnings.toInt(),
                         );
                       }
