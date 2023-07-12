@@ -1,4 +1,5 @@
 import 'package:church_clicker/consts/ad_id.dart';
+import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 import 'package:church_clicker/extensions/int_extension.dart';
 import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
@@ -108,14 +109,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     );
   }
 
-  void _showInitDialog(BuildContext ctx, int lastPlayedTime) async {
+  void _showInitDialog(BuildContext ctx,
+      {required int lastPlayedTime, required int churchEarings}) async {
     await Future.delayed(Duration.zero, () {
-      showDialog(context: context, builder: (context) => const InitialDialog()
-          // AlertDialog(
-          //   title: Text((DateTime.now().millisecondsSinceEpoch - lastPlayedTime)
-          //       .toString()),
-          // ),
-          );
+      showDialog(
+        context: context,
+        builder: (context) => InitialDialog(
+          lastTimePLayed:
+              DateTime.now().millisecondsSinceEpoch - lastPlayedTime,
+          churchEarnings: churchEarings,
+        ),
+      );
     });
   }
 
@@ -125,83 +129,100 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       builder: (context, navState) {
         return BlocBuilder<AbilitiesCubit, AbilitiesState>(
           builder: (context, abilitiesState) {
-            return BlocBuilder<HiveCubit, HiveState>(
-              builder: (context, hiveState) {
-                if (!afterDialogInit) {
-                  afterDialogInit = true;
-                  _showInitDialog(context, hiveState.lastPlayedTime);
-                }
-                return Scaffold(
-                  extendBodyBehindAppBar: true,
-                  extendBody: true,
-                  backgroundColor: const Color(0xFF292241),
-                  appBar: AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    centerTitle: true,
-                    title: Text(
-                      abilitiesState.earnedMoney.toInt().toShortenedString(),
-                      style: const TextStyle(color: Colors.white, fontSize: 55),
-                    ),
-                    actions: [
-                      if (navState.currentIndex == 3 ||
-                          navState.currentIndex == 2)
-                        IconButton(
-                          onPressed: () => Navigator.of(context)
-                              .pushNamed(LanguagesScreen.route),
-                          icon: const Icon(
-                            Icons.settings,
-                            color: Color(0xFFE10032),
-                          ),
+            return BlocBuilder<ChurchCubit, ChurchState>(
+              builder: (context, churchState) {
+                return BlocBuilder<HiveCubit, HiveState>(
+                  builder: (context, hiveState) {
+                    if (!afterDialogInit) {
+                      afterDialogInit = true;
+                      if (DateTime.now().millisecondsSinceEpoch -
+                              hiveState.lastPlayedTime >
+                          600000) {
+                        _showInitDialog(
+                          context,
+                          lastPlayedTime: hiveState.lastPlayedTime > 86400000
+                              ? 86400000
+                              : hiveState.lastPlayedTime,
+                          churchEarings: churchState.churchEarnings.toInt(),
+                        );
+                      }
+                    }
+                    return Scaffold(
+                      extendBodyBehindAppBar: true,
+                      extendBody: true,
+                      backgroundColor: const Color(0xFF292241),
+                      appBar: AppBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        centerTitle: true,
+                        title: Text(
+                          abilitiesState.earnedMoney
+                              .toInt()
+                              .toShortenedString(),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 55),
                         ),
-                    ],
-                  ),
-                  body: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: IndexedStack(
-                      key: ValueKey<int>(navState.currentIndex),
-                      index: navState.currentIndex,
-                      children: bodyContentList,
-                    ),
-                  ),
-                  bottomNavigationBar: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxHeight: 100,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              buttonBuilder(
-                                  context: context,
-                                  i: 0,
-                                  pageIndex: navState.currentIndex),
-                              buttonBuilder(
-                                  context: context,
-                                  i: 1,
-                                  pageIndex: navState.currentIndex),
-                              buttonBuilder(
-                                  context: context,
-                                  i: 2,
-                                  pageIndex: navState.currentIndex),
-                              buttonBuilder(
-                                  context: context,
-                                  i: 3,
-                                  pageIndex: navState.currentIndex),
-                            ],
-                          ),
+                        actions: [
+                          if (navState.currentIndex == 3 ||
+                              navState.currentIndex == 2)
+                            IconButton(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(LanguagesScreen.route),
+                              icon: const Icon(
+                                Icons.settings,
+                                color: Color(0xFFE10032),
+                              ),
+                            ),
+                        ],
+                      ),
+                      body: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        child: IndexedStack(
+                          key: ValueKey<int>(navState.currentIndex),
+                          index: navState.currentIndex,
+                          children: bodyContentList,
                         ),
                       ),
-                      (_bannerAd != null && _bannerAdError == false)
-                          ? SizedBox(
-                              height: 60, child: AdWidget(ad: _bannerAd!))
-                          : const SizedBox.shrink()
-                    ],
-                  ),
+                      bottomNavigationBar: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxHeight: 100,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  buttonBuilder(
+                                      context: context,
+                                      i: 0,
+                                      pageIndex: navState.currentIndex),
+                                  buttonBuilder(
+                                      context: context,
+                                      i: 1,
+                                      pageIndex: navState.currentIndex),
+                                  buttonBuilder(
+                                      context: context,
+                                      i: 2,
+                                      pageIndex: navState.currentIndex),
+                                  buttonBuilder(
+                                      context: context,
+                                      i: 3,
+                                      pageIndex: navState.currentIndex),
+                                ],
+                              ),
+                            ),
+                          ),
+                          (_bannerAd != null && _bannerAdError == false)
+                              ? SizedBox(
+                                  height: 60, child: AdWidget(ad: _bannerAd!))
+                              : const SizedBox.shrink()
+                        ],
+                      ),
+                    );
+                  },
                 );
               },
             );

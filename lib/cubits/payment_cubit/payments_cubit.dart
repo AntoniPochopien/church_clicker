@@ -36,7 +36,6 @@ class PaymentsCubit extends Cubit<PaymentsState> {
           purchaseDetailsList.forEach(
             (element) async {
               if (element.pendingCompletePurchase) {
-                print('GIVING PRODUCT TO USER');
                 await iap.completePurchase(element);
               }
             },
@@ -44,7 +43,7 @@ class PaymentsCubit extends Cubit<PaymentsState> {
           listenToPurchaseUpdated(purchaseDetailsList);
         },
         onDone: () => subscription.cancel(),
-        onError: (error) => print(error),
+        //onError: (error) => print(error),
       );
       await getProducts();
     }
@@ -75,7 +74,6 @@ class PaymentsCubit extends Cubit<PaymentsState> {
   void listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) {
     purchaseDetailsList.forEach(
       (element) {
-        print('produkt: ${element.productID}');
         if (element.status == PurchaseStatus.pending) {
           emit(
             state.copyWith(pending: true),

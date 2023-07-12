@@ -8,8 +8,8 @@ class PentagonCustomClipper extends CustomClipper<Path> {
     // path.lineTo(15, 15);
     // path.lineTo(15, 50);
     path.addPolygon([
-      Offset(10, 0),
-      Offset(0, 10),
+      const Offset(10, 0),
+      const Offset(0, 10),
       Offset(0, size.height - 10),
       Offset(10, size.height),
       Offset(size.width - 10, size.height),

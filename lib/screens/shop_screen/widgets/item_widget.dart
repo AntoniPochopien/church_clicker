@@ -72,10 +72,10 @@ class ItemWidget extends StatelessWidget {
                         children: [
                           Text(
                             name,
-                            style: TextStyle(fontSize: 24),
+                            style: const TextStyle(fontSize: 24),
                           ),
                           Text(
-                            '${ownedLvl} / ${maxLvl}',
+                            '$ownedLvl / $maxLvl',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black.withOpacity(0.5)),
