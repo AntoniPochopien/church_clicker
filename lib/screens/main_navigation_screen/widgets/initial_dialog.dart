@@ -24,8 +24,9 @@ class _InitialDialogState extends State<InitialDialog> {
   @override
   void initState() {
     super.initState();
-    earnedMoney = (widget.churchEarnings * 0.01).toInt() *
-        (widget.lastTimePLayed ~/ 1000);
+    earnedMoney =
+        ((widget.churchEarnings * widget.lastTimePLayed ~/ 1000) * 0.01)
+            .toInt();
   }
 
   @override
