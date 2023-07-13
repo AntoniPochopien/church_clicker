@@ -139,7 +139,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                           DateTime.now().millisecondsSinceEpoch -
                               hiveState.lastPlayedTime;
 
-                      if (lastPlayedCalulated > 6000000 &&
+                      if (lastPlayedCalulated > 600000 &&
                           churchState.churchEarnings > 0) {
                         _showInitDialog(
                           context,
