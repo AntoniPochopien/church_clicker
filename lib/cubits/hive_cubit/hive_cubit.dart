@@ -28,11 +28,12 @@ class HiveCubit extends Cubit<HiveState> {
     box = await Hive.openBox('MyBox');
     emit(
       state.copyWith(
-        lastPlayedTime: box.get('lastPlayedTime'),
+        lastPlayedTime: box.get('lastPlayedTime',
+            defaultValue: DateTime.now().millisecondsSinceEpoch),
         locale: box.get('locale'),
-        avaliableSpins: box.get('avaliableSpins') ?? 0,
-        allEarings: box.get('allEarings') ?? 0,
-        earnedMoney: box.get('earnedMoney') ?? 0,
+        avaliableSpins: box.get('avaliableSpins', defaultValue: 0),
+        allEarings: box.get('allEarings', defaultValue: 0.0),
+        earnedMoney: box.get('earnedMoney', defaultValue: 0.0),
         ownedUpgradesPriestDb:
             box.get('ownedUpgradesPriestDb')?.cast<UpgradeModel>().toList() ??
                 [],

@@ -29,60 +29,62 @@ class LanguagesScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.language_select_language,
-                    style: const TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ...L10n.all.map(
-                            (e) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 4.0),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: languageState.locale == e
-                                      ? const Color(0xFFE10032)
-                                      : Colors.white,
-                                  shape: BeveledRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+          body: SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.language_select_language,
+                      style: const TextStyle(color: Colors.white, fontSize: 30),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ...L10n.all.map(
+                              (e) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4.0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: languageState.locale == e
+                                        ? const Color(0xFFE10032)
+                                        : Colors.white,
+                                    shape: BeveledRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                   ),
-                                ),
-                                onPressed: () {
-                                  BlocProvider.of<LanguageCubit>(context)
-                                      .setLocale(
-                                          locale: Locale(e.languageCode));
-                                },
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      L10n.getNativeLangName(e.languageCode),
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: languageState.locale == e
-                                              ? Colors.white
-                                              : const Color(0xFF292241),
-                                          fontSize: 25),
+                                  onPressed: () {
+                                    BlocProvider.of<LanguageCubit>(context)
+                                        .setLocale(
+                                            locale: Locale(e.languageCode));
+                                  },
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        L10n.getNativeLangName(e.languageCode),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: languageState.locale == e
+                                                ? Colors.white
+                                                : const Color(0xFF292241),
+                                            fontSize: 25),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

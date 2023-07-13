@@ -115,8 +115,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       showDialog(
         context: context,
         builder: (context) => InitialDialog(
-          lastTimePLayed:
-              DateTime.now().millisecondsSinceEpoch - lastPlayedTime,
+          lastTimePLayed: lastPlayedTime,
           churchEarnings: churchEarings,
         ),
       );
@@ -135,10 +134,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   builder: (context, hiveState) {
                     if (!afterDialogInit) {
                       afterDialogInit = true;
+
                       final lastPlayedCalulated =
                           DateTime.now().millisecondsSinceEpoch -
                               hiveState.lastPlayedTime;
-                      if (lastPlayedCalulated > 600000 &&
+
+                      if (lastPlayedCalulated > 6000000 &&
                           churchState.churchEarnings > 0) {
                         _showInitDialog(
                           context,
@@ -149,79 +150,82 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                         );
                       }
                     }
-                    return Scaffold(
-                      extendBodyBehindAppBar: true,
-                      extendBody: true,
-                      backgroundColor: const Color(0xFF292241),
-                      appBar: AppBar(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        centerTitle: true,
-                        title: Text(
-                          abilitiesState.earnedMoney
-                              .toInt()
-                              .toShortenedString(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 55),
-                        ),
-                        actions: [
-                          if (navState.currentIndex == 3 ||
-                              navState.currentIndex == 2)
-                            IconButton(
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed(LanguagesScreen.route),
-                              icon: const Icon(
-                                Icons.settings,
-                                color: Color(0xFFE10032),
-                              ),
-                            ),
-                        ],
-                      ),
-                      body: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 200),
-                        child: IndexedStack(
-                          key: ValueKey<int>(navState.currentIndex),
-                          index: navState.currentIndex,
-                          children: bodyContentList,
-                        ),
-                      ),
-                      bottomNavigationBar: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                maxHeight: 100,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  buttonBuilder(
-                                      context: context,
-                                      i: 0,
-                                      pageIndex: navState.currentIndex),
-                                  buttonBuilder(
-                                      context: context,
-                                      i: 1,
-                                      pageIndex: navState.currentIndex),
-                                  buttonBuilder(
-                                      context: context,
-                                      i: 2,
-                                      pageIndex: navState.currentIndex),
-                                  buttonBuilder(
-                                      context: context,
-                                      i: 3,
-                                      pageIndex: navState.currentIndex),
-                                ],
-                              ),
-                            ),
+                    return SafeArea(
+                      top: false,
+                      child: Scaffold(
+                        extendBodyBehindAppBar: true,
+                        extendBody: true,
+                        backgroundColor: const Color(0xFF292241),
+                        appBar: AppBar(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          centerTitle: true,
+                          title: Text(
+                            abilitiesState.earnedMoney
+                                .toInt()
+                                .toShortenedString(),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 55),
                           ),
-                          (_bannerAd != null && _bannerAdError == false)
-                              ? SizedBox(
-                                  height: 60, child: AdWidget(ad: _bannerAd!))
-                              : const SizedBox.shrink()
-                        ],
+                          actions: [
+                            if (navState.currentIndex == 3 ||
+                                navState.currentIndex == 2)
+                              IconButton(
+                                onPressed: () => Navigator.of(context)
+                                    .pushNamed(LanguagesScreen.route),
+                                icon: const Icon(
+                                  Icons.settings,
+                                  color: Color(0xFFE10032),
+                                ),
+                              ),
+                          ],
+                        ),
+                        body: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 200),
+                          child: IndexedStack(
+                            key: ValueKey<int>(navState.currentIndex),
+                            index: navState.currentIndex,
+                            children: bodyContentList,
+                          ),
+                        ),
+                        bottomNavigationBar: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxHeight: 100,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    buttonBuilder(
+                                        context: context,
+                                        i: 0,
+                                        pageIndex: navState.currentIndex),
+                                    buttonBuilder(
+                                        context: context,
+                                        i: 1,
+                                        pageIndex: navState.currentIndex),
+                                    buttonBuilder(
+                                        context: context,
+                                        i: 2,
+                                        pageIndex: navState.currentIndex),
+                                    buttonBuilder(
+                                        context: context,
+                                        i: 3,
+                                        pageIndex: navState.currentIndex),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            (_bannerAd != null && _bannerAdError == false)
+                                ? SizedBox(
+                                    height: 60, child: AdWidget(ad: _bannerAd!))
+                                : const SizedBox.shrink()
+                          ],
+                        ),
                       ),
                     );
                   },
