@@ -34,5 +34,7 @@
 "church_item_9": "Crucifix",
 "church_item_10": "Cimetière",
 "popup_title": "Lorsque vous êtes allé vous reposer, les fidèles vous ont donné :",
-"popup_button": "Multipliez vos bénéfices !"
+"popup_button": "Multipliez vos bénéfices !",
+"onboarding_text": "Achetez et améliorez les églises !\n+{value} par seconde",
+"onboarding_buy": "Acheter !"
 }

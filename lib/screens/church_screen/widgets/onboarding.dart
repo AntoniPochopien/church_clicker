@@ -5,6 +5,7 @@ import 'package:church_clicker/widgets/pentagon_custom_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -39,10 +40,10 @@ class OnBoarding extends StatelessWidget {
                         const SizedBox(
                           height: 18,
                         ),
-                        const Text(
-                          'Kup i ulepszaj kościoły!\n+ 10 na sekundę',
+                        Text(
+                          AppLocalizations.of(context)!.onboarding_text('10'),
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 23,
                             color: Color(0xFF152937),
                           ),
@@ -70,12 +71,12 @@ class OnBoarding extends StatelessWidget {
                                   price: ShopItems.churchItems[0].price);
                             }
                           },
-                          child: const SizedBox(
+                          child: SizedBox(
                             width: double.infinity,
                             child: Text(
-                              'Kup!',
+                              AppLocalizations.of(context)!.onboarding_buy,
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 24),
+                              style: const TextStyle(fontSize: 24),
                             ),
                           ),
                         )

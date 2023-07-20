@@ -34,5 +34,7 @@
 "church_item_9": "Crucifixo",
 "church_item_10": "Cemitério",
 "popup_title": "Quando você foi descansar, os fiéis te deram:",
-"popup_button": "Multiplique seu lucro!"
+"popup_button": "Multiplique seu lucro!",
+"onboarding_text": "Compre e melhore igrejas!\n+{value} por segundo",
+"onboarding_buy": "Comprar!"
 }

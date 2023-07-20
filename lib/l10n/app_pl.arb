@@ -34,5 +34,7 @@
     "church_item_9":"Krzyż",
     "church_item_10":"Cmentarz",
     "popup_title": "Kiedy udałeś się na spoczynek wierni przekazali Ci:",
-    "popup_button": "Pomnóż zysk!"
+    "popup_button": "Pomnóż zysk!",
+    "onboarding_text":"Kup i ulepszaj kościoły!\n+{value} na sekundę",
+    "onboarding_buy":"Kup!"
 }

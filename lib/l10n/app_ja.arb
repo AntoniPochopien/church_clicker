@@ -34,5 +34,7 @@
 "church_item_9": "十字架",
 "church_item_10": "墓地",
 "popup_title": "休むとき、信者たちはあなたに与えました：",
-"popup_button": "利益を増やす！"
+"popup_button": "利益を増やす！",
+"onboarding_text": "教会を購入してアップグレード！\n+ 1秒あたり{value}",
+"onboarding_buy": "購入する！"
 }

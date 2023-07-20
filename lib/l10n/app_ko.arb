@@ -34,5 +34,7 @@
 "church_item_9": "십자가",
 "church_item_10": "묘지",
 "popup_title": "쉬러 갔을 때, 성도들이 당신에게 주었습니다:",
-"popup_button": "수익을 증가시키세요!"
+"popup_button": "수익을 증가시키세요!",
+"onboarding_text": "교회를 구입하고 업그레이드하세요!\n 초당 +{value}",
+"onboarding_buy": "구매하기!"
 }

@@ -34,5 +34,7 @@
 "church_item_9": "Croce",
 "church_item_10": "Cimitero",
 "popup_title": "Quando ti sei riposato, i fedeli ti hanno dato:",
-"popup_button": "Moltiplica il tuo profitto!"
+"popup_button": "Moltiplica il tuo profitto!",
+"onboarding_text": "Acquista e potenzia le chiese!\n+{value} al secondo",
+"onboarding_buy": "Acquista!"
 }

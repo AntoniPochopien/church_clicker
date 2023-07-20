@@ -34,5 +34,8 @@
 "church_item_9": "Crucifix",
 "church_item_10": "Cemetery",
 "popup_title": "When you went to rest, the faithful gave you:",
-"popup_button": "Multiply your profit!"
+"popup_button": "Multiply your profit!",
+"onboarding_text": "Buy and upgrade churches!\n+{value} per second",
+"onboarding_buy": "Buy!"
+
 }

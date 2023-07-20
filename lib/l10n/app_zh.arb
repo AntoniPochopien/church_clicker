@@ -34,5 +34,7 @@
 "church_item_9": "十字架",
 "church_item_10": "墓地",
 "popup_title": "当你休息时，信徒给了你：",
-"popup_button": "增加你的收益！"
+"popup_button": "增加你的收益！",
+"onboarding_text": "购买并升级教堂！\n 每秒 +{value} 个",
+"onboarding_buy": "购买！"
 }

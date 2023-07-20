@@ -34,5 +34,7 @@
 "church_item_9": "Kreuz",
 "church_item_10": "Friedhof",
 "popup_title": "Als du dich ausgeruht hast, haben dir die Gläubigen gegeben:",
-"popup_button": "Multipliziere deinen Gewinn!"
+"popup_button": "Multipliziere deinen Gewinn!",
+"onboarding_text": "Kirchen kaufen und verbessern!\n+{value} pro Sekunde",
+"onboarding_buy": "Kaufen!"
 }
