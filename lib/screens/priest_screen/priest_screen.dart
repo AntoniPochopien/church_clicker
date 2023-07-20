@@ -56,10 +56,13 @@ class _PriestScreenState extends State<PriestScreen>
                 children: [
                   const RiveAnimation.asset(
                     'assets/rive/active/active_bg_1.riv',
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
-                  RiveAnimation.asset(
-                      'assets/rive/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.riv'),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: RiveAnimation.asset(
+                        'assets/rive/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.riv'),
+                  ),
                   const LevelIndicator(),
                   ...tapObjects.map(
                     (e) => AnimatedBuilder(

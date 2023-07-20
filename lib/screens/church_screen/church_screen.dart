@@ -55,7 +55,7 @@ class _ChurchScreenState extends State<ChurchScreen>
             return Stack(children: [
               const RiveAnimation.asset(
                 'assets/rive/passive/passive_bg_1.riv',
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
               if (churchLvl != 0)
                 Positioned(
@@ -73,10 +73,16 @@ class _ChurchScreenState extends State<ChurchScreen>
                   ),
                 ),
               churchLvl != 0
-                  ? RiveAnimation.asset(
-                      'assets/rive/passive/passive_lvl_$churchLvl.riv')
-                  : SvgPicture.asset(
-                      'assets/images/svg/general/passive_lvl_0.svg'),
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: RiveAnimation.asset(
+                          'assets/rive/passive/passive_lvl_$churchLvl.riv'),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: SvgPicture.asset(
+                          'assets/images/svg/general/passive_lvl_0.svg'),
+                    ),
               SafeArea(
                 child: Align(
                   alignment: Alignment.topCenter,

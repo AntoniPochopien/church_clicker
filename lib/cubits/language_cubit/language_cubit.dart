@@ -15,6 +15,6 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   void setLocale({required Locale locale}) {
     emit(state.copyWith(locale: locale));
-    hiveCubit.save(locale: locale.languageCode);
+    hiveCubit.setLocale(locale: locale.languageCode);
   }
 }

@@ -25,7 +25,7 @@ class Wheel extends StatelessWidget {
             return FortuneItem(
               child: RotatedBox(quarterTurns: 3, child: Text('x $v')),
               style: FortuneItemStyle(
-                borderWidth: 3,
+                borderWidth: 0,
                 borderColor: Colors.black,
                 color: i % 2 == 0
                     ? const Color(0xFFA80022)

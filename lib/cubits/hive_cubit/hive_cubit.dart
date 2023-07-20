@@ -63,6 +63,11 @@ class HiveCubit extends Cubit<HiveState> {
         ownedUpgradesChurchDb ?? state.ownedUpgradesChurchDb);
   }
 
+  void setLocale({required String locale}) {
+    emit(state.copyWith(locale: locale));
+    save(locale: locale);
+  }
+
   void addSpin({required int amount}) {
     emit(state.copyWith(avaliableSpins: state.avaliableSpins + amount));
   }

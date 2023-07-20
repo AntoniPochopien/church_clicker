@@ -48,6 +48,7 @@ class ItemsList extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: isChurch
                             ? ShopItems.churchItems.length
                             : ShopItems.priestItems.length,
