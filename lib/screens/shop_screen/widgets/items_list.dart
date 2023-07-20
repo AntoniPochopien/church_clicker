@@ -34,6 +34,8 @@ class ItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final itemList = isChurch ? ShopItems.churchItems : ShopItems.priestItems;
+
     return BlocBuilder<ChurchCubit, ChurchState>(
       builder: (context, churchState) {
         return BlocBuilder<AbilitiesCubit, AbilitiesState>(
@@ -47,42 +49,40 @@ class ItemsList extends StatelessWidget {
                     style: const TextStyle(color: Colors.white, fontSize: 33),
                   ),
                   Expanded(
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: isChurch
-                            ? ShopItems.churchItems.length
-                            : ShopItems.priestItems.length,
-                        itemBuilder: (context, index) {
-                          final item = isChurch
-                              ? ShopItems.churchItems[index]
-                              : ShopItems.priestItems[index];
-                          final ownedLvl = _calcualteOwnedLvl(
-                              upgradeId: item.id,
-                              ownedUpgradeIdList: isChurch
-                                  ? churchState.ownedUpgradesChurch
-                                  : abilitiesState.ownedUpgradesPriest);
-                          final price = item.price *
-                              math.pow(item.priceMultiplier, ownedLvl);
-
-                          return ItemWidget(
-                            upgradeValue: item.updateValue,
-                            imgPath: item.imgPath,
-                            isAvaliable: abilitiesState.earnedMoney >=
-                                    (price != 0 ? price : item.price) &&
-                                item.maxLvl > ownedLvl,
-                            isPriestUpgrade: !isChurch,
-                            onTap: isChurch
-                                ? BlocProvider.of<ChurchCubit>(context)
-                                    .buyUpgrade
-                                : BlocProvider.of<AbilitiesCubit>(context)
-                                    .buyUpgrade,
-                            id: item.id,
-                            maxLvl: item.maxLvl,
-                            name: ShopItems.itemNames(context)[item.id]!,
-                            ownedLvl: ownedLvl,
-                            price: ownedLvl != 0 ? price.toInt() : item.price,
-                          );
-                        }),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: SingleChildScrollView(
+                        child: Column(children: [
+                          ...itemList.map((item) {
+                            final ownedLvl = _calcualteOwnedLvl(
+                                upgradeId: item.id,
+                                ownedUpgradeIdList: isChurch
+                                    ? churchState.ownedUpgradesChurch
+                                    : abilitiesState.ownedUpgradesPriest);
+                            final price = item.price *
+                                math.pow(item.priceMultiplier, ownedLvl);
+                            return ItemWidget(
+                              upgradeValue: item.updateValue,
+                              imgPath: item.imgPath,
+                              isAvaliable: abilitiesState.earnedMoney >=
+                                      (price != 0 ? price : item.price) &&
+                                  item.maxLvl > ownedLvl,
+                              isPriestUpgrade: !isChurch,
+                              onTap: isChurch
+                                  ? BlocProvider.of<ChurchCubit>(context)
+                                      .buyUpgrade
+                                  : BlocProvider.of<AbilitiesCubit>(context)
+                                      .buyUpgrade,
+                              id: item.id,
+                              maxLvl: item.maxLvl,
+                              name: ShopItems.itemNames(context)[item.id]!,
+                              ownedLvl: ownedLvl,
+                              price: ownedLvl != 0 ? price.toInt() : item.price,
+                            );
+                          })
+                        ]),
+                      ),
+                    ),
                   ),
                 ],
               ),

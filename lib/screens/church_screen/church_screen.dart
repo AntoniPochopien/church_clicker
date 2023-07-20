@@ -1,6 +1,7 @@
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/extensions/int_extension.dart';
+import 'package:church_clicker/screens/church_screen/widgets/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -74,14 +75,14 @@ class _ChurchScreenState extends State<ChurchScreen>
                 ),
               churchLvl != 0
                   ? Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
+                      padding: const EdgeInsets.only(top: 25.0),
                       child: RiveAnimation.asset(
                           'assets/rive/passive/passive_lvl_$churchLvl.riv'),
                     )
                   : Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
+                      padding: const EdgeInsets.only(top: 25.0),
                       child: SvgPicture.asset(
-                          'assets/images/svg/general/passive_lvl_0.svg'),
+                          'assets/images/svg/passive/passive_lvl_0.svg'),
                     ),
               SafeArea(
                 child: Align(
@@ -92,7 +93,9 @@ class _ChurchScreenState extends State<ChurchScreen>
                         color: Colors.white, fontSize: 33, height: 0),
                   ),
                 ),
-              )
+              ),
+              if (churchLvl == 0)
+                const Align(alignment: Alignment.center, child: OnBoarding())
             ]);
           },
         );

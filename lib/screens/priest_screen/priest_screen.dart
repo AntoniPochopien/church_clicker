@@ -59,7 +59,7 @@ class _PriestScreenState extends State<PriestScreen>
                     fit: BoxFit.cover,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 25),
                     child: RiveAnimation.asset(
                         'assets/rive/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.riv'),
                   ),
@@ -69,14 +69,14 @@ class _PriestScreenState extends State<PriestScreen>
                       animation: e.controller,
                       builder: (BuildContext context, Widget? child) {
                         return Positioned(
-                          top: e.position.dy + (e.controller.value * -40),
+                          top: (e.position.dy - 50) - (e.controller.value * 80),
                           left: e.position.dx,
                           child: Opacity(
                             opacity: e.controller.value,
                             child: Text(
                               '+ ${abilitiesState.onTapPower.toInt().toShortenedString()}',
                               style: const TextStyle(
-                                  color: Colors.amber, fontSize: 22),
+                                  color: Colors.amber, fontSize: 25),
                             ),
                           ),
                         );
