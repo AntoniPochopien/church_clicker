@@ -66,7 +66,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       adUnitId: AdId.bannerAdUnitId,
       listener: BannerAdListener(
         onAdLoaded: (ad) => _bannerAdError = false,
-        onAdFailedToLoad: (ad, error) => _bannerAdError = true,
+        onAdFailedToLoad: (ad, error) {
+          _bannerAdError = true;
+          print(
+              'banner error ${error.message} ${error.domain} ${error.code} ${error.responseInfo}');
+        },
       ),
       request: const AdRequest(),
     )..load();
