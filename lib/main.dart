@@ -1,3 +1,4 @@
+import 'package:church_clicker/cubits/aureola_cubit/cubit/aureola_cubit.dart';
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/language_cubit/language_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LevelCubit()),
         BlocProvider(create: (context) => NavigationCubit()),
         BlocProvider(create: (context) => HiveCubit()),
+        BlocProvider(create: (context) => AureolaCubit()..startAureolaTimer()),
         BlocProvider(create: (context) => AbilitiesCubit()..start(context)),
         BlocProvider(create: (context) => ChurchCubit()..start(context)),
         BlocProvider(create: (context) => LanguageCubit()..start(context)),

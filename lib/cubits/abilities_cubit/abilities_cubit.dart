@@ -81,12 +81,13 @@ class AbilitiesCubit extends Cubit<AbilitiesState> {
     hiveCubit.save(earnedMoney: state.earnedMoney);
   }
 
-  void tap() {
+  void tap({bool isBonus = false}) {
+    final v = isBonus ? tapValue * 2 : tapValue;
     emit(
-      state.copyWith(earnedMoney: state.earnedMoney += tapValue),
+      state.copyWith(earnedMoney: state.earnedMoney += v),
     );
     hiveCubit.save(earnedMoney: state.earnedMoney);
-    hiveCubit.saveAllEarings(priestEarings: tapValue);
+    hiveCubit.saveAllEarings(priestEarings: v);
   }
 
   void calculateTapPower() {
