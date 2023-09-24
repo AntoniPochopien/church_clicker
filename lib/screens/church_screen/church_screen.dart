@@ -54,9 +54,47 @@ class _ChurchScreenState extends State<ChurchScreen>
                         .currentLvl
                     : 0;
             return Stack(children: [
-              Lottie.asset(
-                'assets/lottie/passive/passive_bg_1.json',
-                fit: BoxFit.cover,
+              Column(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Positioned.fill(
+                          child: Lottie.asset(
+                            'assets/lottie/passive/passive_bg_1.json',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        SafeArea(
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Text(
+                              '+ ${churchState.churchEarnings.toInt().toShortenedString()} / s',
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 33, height: 0),
+                            ),
+                          ),
+                        ),
+                        churchLvl != 0
+                            ? Lottie.asset(
+                                'assets/lottie/passive/passive_lvl_$churchLvl.json',
+                                alignment: Alignment.bottomCenter,
+                              )
+                            : SvgPicture.asset(
+                                'assets/images/svg/passive/passive_lvl_0.svg',
+                                alignment: Alignment.bottomCenter,
+                              ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        color: const Color(0xFF098D74),
+                      ))
+                ],
               ),
               if (churchLvl != 0)
                 Positioned(
@@ -73,27 +111,6 @@ class _ChurchScreenState extends State<ChurchScreen>
                     ),
                   ),
                 ),
-              churchLvl != 0
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: Lottie.asset(
-                          'assets/lottie/passive/passive_lvl_$churchLvl.json'),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: SvgPicture.asset(
-                          'assets/images/svg/passive/passive_lvl_0.svg'),
-                    ),
-              SafeArea(
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    '+ ${churchState.churchEarnings.toInt().toShortenedString()} / s',
-                    style: const TextStyle(
-                        color: Colors.white, fontSize: 33, height: 0),
-                  ),
-                ),
-              ),
               if (churchLvl == 0)
                 const Align(alignment: Alignment.center, child: OnBoarding())
             ]);
