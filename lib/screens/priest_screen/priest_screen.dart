@@ -1,4 +1,4 @@
-import 'package:church_clicker/cubits/aureola_cubit/cubit/aureola_cubit.dart';
+import 'package:church_clicker/cubits/aureola_cubit/aureola_cubit.dart';
 import 'package:church_clicker/cubits/level_cubit/level_cubit.dart';
 import 'package:church_clicker/extensions/int_extension.dart';
 import 'package:church_clicker/models/animated_tap.dart';
