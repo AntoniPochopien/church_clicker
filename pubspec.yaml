@@ -49,7 +49,6 @@ dependencies:
   intl: ^0.18.0
   in_app_purchase: ^3.1.7
   confetti: ^0.7.0
-  rive: ^0.11.4
   lottie: ^2.4.0
 
 dev_dependencies:
@@ -101,9 +100,9 @@ flutter:
     - assets/images/svg/shop_active/
     - assets/images/svg/general/
     - assets/images/png/
-    - assets/rive/active/
-    - assets/rive/passive/
     - assets/lottie/
+    - assets/lottie/active/
+    - assets/lottie/passive/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

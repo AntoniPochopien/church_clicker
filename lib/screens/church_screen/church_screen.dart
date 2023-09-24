@@ -5,7 +5,7 @@ import 'package:church_clicker/screens/church_screen/widgets/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rive/rive.dart';
+import 'package:lottie/lottie.dart';
 
 class ChurchScreen extends StatefulWidget {
   const ChurchScreen({super.key});
@@ -54,8 +54,8 @@ class _ChurchScreenState extends State<ChurchScreen>
                         .currentLvl
                     : 0;
             return Stack(children: [
-              const RiveAnimation.asset(
-                'assets/rive/passive/passive_bg_1.riv',
+              Lottie.asset(
+                'assets/lottie/passive/passive_bg_1.json',
                 fit: BoxFit.cover,
               ),
               if (churchLvl != 0)
@@ -76,8 +76,8 @@ class _ChurchScreenState extends State<ChurchScreen>
               churchLvl != 0
                   ? Padding(
                       padding: const EdgeInsets.only(top: 25.0),
-                      child: RiveAnimation.asset(
-                          'assets/rive/passive/passive_lvl_$churchLvl.riv'),
+                      child: Lottie.asset(
+                          'assets/lottie/passive/passive_lvl_$churchLvl.json'),
                     )
                   : Padding(
                       padding: const EdgeInsets.only(top: 25.0),

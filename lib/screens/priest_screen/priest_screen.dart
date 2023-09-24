@@ -5,7 +5,7 @@ import 'package:church_clicker/models/animated_tap.dart';
 import 'package:church_clicker/widgets/level_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rive/rive.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../cubits/abilities_cubit/abilities_cubit.dart';
 
@@ -58,33 +58,67 @@ class _PriestScreenState extends State<PriestScreen>
                         .tap(isBonus: aureolaState is AureolaFull);
                   },
                   child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      const RiveAnimation.asset(
-                        'assets/rive/active/active_bg_1.riv',
-                        fit: BoxFit.cover,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 25),
-                        child: RiveAnimation.asset(
-                            'assets/rive/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.riv'),
-                      ),
-                      aureolaState is AureolaHiden
-                          ? const SizedBox()
-                          : Align(
-                              alignment: Alignment.center,
-                              child: SizedBox(
-                                height: 20,
-                                width: 50,
-                                child: CircularProgressIndicator(
-                                  value: aureolaState is AureolaLoading
-                                      ? aureolaState.value / 100
-                                      : null,
-                                  backgroundColor:
-                                      Colors.white.withOpacity(0.5),
-                                  color: Colors.white,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Stack(
+                              alignment: Alignment.topCenter,
+                              children: [
+                                Positioned.fill(
+                                  child: Lottie.asset(
+                                    'assets/lottie/active/active_bg_1.json',
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                              ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    aureolaState is AureolaHiden
+                                        ? const SizedBox()
+                                        : SizedBox(
+                                            height: 30,
+                                            width: 75,
+                                            child: CircularProgressIndicator(
+                                              value:
+                                                  aureolaState is AureolaLoading
+                                                      ? aureolaState.value / 100
+                                                      : null,
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.5),
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.45,
+                                      child: Lottie.asset(
+                                          'assets/lottie/active/active_lvl_${levelState.lvl < 1 ? 1 : levelState.lvl}.json'),
+                                    ),
+                                  ],
+                                ),
+                                if (aureolaState is AureolaFull)
+                                  Positioned.fill(
+                                    child: Lottie.asset(
+                                      'assets/lottie/active/active_bg_light.json',
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                              ],
                             ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: const Color(0xFF292241),
+                            ),
+                          )
+                        ],
+                      ),
                       const LevelIndicator(),
                       ...tapObjects.map(
                         (e) => AnimatedBuilder(
