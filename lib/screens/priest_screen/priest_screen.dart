@@ -86,7 +86,7 @@ class _PriestScreenState extends State<PriestScreen>
                                               value:
                                                   aureolaState is AureolaLoading
                                                       ? aureolaState.value / 100
-                                                      : null,
+                                                      : 1,
                                               backgroundColor:
                                                   Colors.white.withOpacity(0.5),
                                               color: Colors.white,

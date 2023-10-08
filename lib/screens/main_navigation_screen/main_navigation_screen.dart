@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:church_clicker/consts/ad_id.dart';
 import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
@@ -68,8 +70,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onAdLoaded: (ad) => _bannerAdError = false,
         onAdFailedToLoad: (ad, error) {
           _bannerAdError = true;
-          print(
-              'banner error ${error.message} ${error.domain} ${error.code} ${error.responseInfo}');
+          log('banner error ${error.message} ${error.domain} ${error.code} ${error.responseInfo}');
         },
       ),
       request: const AdRequest(),

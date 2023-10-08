@@ -103,13 +103,14 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    if (paymentsState.products.isNotEmpty)
-                                      PurchaseButton(
-                                          spinsAmount: 10,
-                                          productDetails:
-                                              paymentsState.products[0],
-                                          productId:
-                                              paymentsState.products[0].id),
+                                    paymentsState.products.isNotEmpty
+                                        ? PurchaseButton(
+                                            spinsAmount: 10,
+                                            productDetails:
+                                                paymentsState.products[0],
+                                            productId:
+                                                paymentsState.products[0].id)
+                                        : const SizedBox(),
                                     SizedBox(
                                       width: 50,
                                       height: 100,
@@ -117,13 +118,14 @@ class _FortuneWheelScreenState extends State<FortuneWheelScreen> {
                                         'assets/images/svg/general/wheel_indicator.svg',
                                       ),
                                     ),
-                                    if (paymentsState.products.length > 1)
-                                      PurchaseButton(
-                                          spinsAmount: 3,
-                                          productDetails:
-                                              paymentsState.products[1],
-                                          productId:
-                                              paymentsState.products[1].id),
+                                    paymentsState.products.length > 1
+                                        ? PurchaseButton(
+                                            spinsAmount: 3,
+                                            productDetails:
+                                                paymentsState.products[1],
+                                            productId:
+                                                paymentsState.products[1].id)
+                                        : const SizedBox(),
                                   ],
                                 ),
                               ),

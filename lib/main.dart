@@ -6,6 +6,9 @@ import 'package:church_clicker/cubits/payment_cubit/payments_cubit.dart';
 import 'package:church_clicker/l10n/l10n.dart';
 import 'package:church_clicker/screens/fake_splashscreen/fake_splashscreen.dart';
 import 'package:church_clicker/screens/languages_screen/languages_screen.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +17,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import './cubits/hive_cubit/hive_cubit.dart';
 import './screens/main_navigation_screen/cubit/navigation_cubit.dart';
@@ -26,8 +31,16 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  await Hive.initFlutter();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
   MobileAds.instance.initialize();
+  await Hive.initFlutter();
   Hive.registerAdapter(UpgradeModelAdapter());
   runApp(const MyApp());
 }
@@ -66,6 +79,9 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate
             ],
             initialRoute: FakeSplashscreen.route,
+            navigatorObservers: [
+              FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)
+            ],
             routes: {
               FakeSplashscreen.route: (context) => const FakeSplashscreen(),
               MainNavigationScreen.route: (context) =>

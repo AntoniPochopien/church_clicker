@@ -12,6 +12,7 @@ class AureolaCubit extends Cubit<AureolaState> {
   int taps = 0;
   int lastTapTime = 0;
   int gainedBonusTime = 0;
+  int initialClicksForBonus = 100;
 
   void startAureolaTimer() {
     aureolaTimer = Stream.periodic(const Duration(seconds: 1), (i) {
@@ -34,16 +35,18 @@ class AureolaCubit extends Cubit<AureolaState> {
 
   void tap() {
     final now = DateTime.now().millisecondsSinceEpoch;
-    if (taps < 100 && gainedBonusTime <= now - 40000) {
+    if (taps < initialClicksForBonus && gainedBonusTime <= now - 40000) {
       taps += 1;
       lastTapTime = now;
     }
-
-    if (taps >= 5 && taps < 100) {
+    if (taps >= 5 &&
+        taps < initialClicksForBonus &&
+        gainedBonusTime <= now - 40000) {
       emit(AureolaLoading(value: taps));
     }
-    if (taps >= 100 && gainedBonusTime <= now - 40000) {
+    if (taps >= initialClicksForBonus && gainedBonusTime <= now - 40000) {
       gainedBonusTime = now;
+      initialClicksForBonus = (initialClicksForBonus * 1.5).round();
       emit(AureolaFull());
     }
   }

@@ -5,6 +5,8 @@ import 'package:church_clicker/cubits/church/church_cubit.dart';
 import 'package:church_clicker/cubits/hive_cubit/hive_cubit.dart';
 import 'package:church_clicker/cubits/language_cubit/language_cubit.dart';
 import 'package:church_clicker/l10n/l10n.dart';
+import 'package:church_clicker/screens/main_navigation_screen/main_navigation_screen.dart';
+import 'package:church_clicker/services/google_ads_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,12 +46,16 @@ class _FakeSplashscreenState extends State<FakeSplashscreen> {
           BlocProvider.of<ChurchCubit>(context).setOwnedUpgradesFromDb(
             ownedUpgradesChurch: hiveState.ownedUpgradesChurchDb,
           );
-          Navigator.of(context).pushReplacementNamed('/MainNavigationScreen');
+          GoogleAdsService().consentInfo();
+          Navigator.of(context)
+              .pushReplacementNamed(MainNavigationScreen.route);
         }
       },
       child: const Scaffold(
         backgroundColor: Color(0xFF292241),
-        body: Center(),
+        body: Center(
+          child: Text('dsadsa'),
+        ),
       ),
     );
   }
